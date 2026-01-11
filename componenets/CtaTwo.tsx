@@ -11,7 +11,7 @@ const CtaTwo = () => {
             {/* Background Image with Gradient Overlay on the right */}
             <div className="absolute inset-0 z-0">
                 <div
-                    className="absolute right-0 top-0 w-full lg:w-[40%] h-full bg-cover bg-center lg:bg-left bg-no-repeat opacity-60 lg:opacity-100"
+                    className="absolute right-0 top-0 w-full lg:w-[40%] h-full bg-cover bg-right lg:bg-right bg-no-repeat opacity-60 lg:opacity-100"
                     style={{ backgroundImage: 'url("https://vegasviprides.com/wp-content/uploads/2024/10/2022-Suburban-in-Orleans.jpg")' }}
                 >
                     {/* Gradient to fade the image into the black background on the left */}
@@ -65,11 +65,7 @@ const CtaTwo = () => {
                                 <div className="space-y-2 text-gray-400 font-light tracking-wide text-sm md:text-base">
                                     <p className="flex items-center space-x-3 group cursor-pointer hover:text-white transition-colors">
                                         <Phone className="w-4 h-4 text-[#B09C6D]" />
-                                        <a href="tel:+13072252444" className="text-white hover:text-[#B09C6D] transition-colors tracking-widest">+1 (307) 225-2444</a>
-                                    </p>
-                                    <p className="flex items-center space-x-3 group cursor-pointer hover:text-white transition-colors">
-                                        <Phone className="w-4 h-4 text-[#B09C6D]" />
-                                        <a href="tel:+13073002099" className="text-white hover:text-[#B09C6D] transition-colors tracking-widest">+1 (307) 300-2099</a>
+                                        <a href="tel:+13072252444" className="text-white hover:text-[#B09C6D] transition-colors tracking-widest">702-800-9093</a>
                                     </p>
                                 </div>
                             </motion.div>

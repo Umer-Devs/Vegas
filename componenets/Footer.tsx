@@ -11,26 +11,16 @@ const Footer = () => {
                 <div className="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 text-center md:text-left">
                     {/* Left Side: Branding & Copyright */}
                     <div className="flex flex-col space-y-4">
-                        <h2 className="text-[#B09C6D] font-bold text-lg tracking-widest uppercase">
-                            VEGAS VIP RIDES
-                        </h2>
+                        <img src="./logo.jpeg" className="h-20 w-40" alt="" />
                         <div className="text-gray-500 text-sm font-light leading-relaxed max-w-xs">
                             <p>© 2026 vegasviprides.com.</p>
-                            <p>Created by Big Marketing USA BMUSA</p>
+                            <p>Created by Wixerp.com</p>
                         </div>
                     </div>
 
                     {/* Center: Navigation Links */}
                     <nav className="flex items-center space-x-8 text-sm font-medium tracking-wide">
-                        <Link href="/" className="text-white hover:text-[#B09C6D] transition-colors">
-                            Home
-                        </Link>
-                        <Link href="/contact" className="text-gray-400 hover:text-[#B09C6D] transition-colors">
-                            Contact
-                        </Link>
-                        <Link href="/services" className="text-gray-400 hover:text-[#B09C6D] transition-colors">
-                            Services
-                        </Link>
+                        
                     </nav>
 
                     {/* Right Side: Social Media Icons */}

@@ -19,7 +19,7 @@ const CtaOne = () => {
                         className="flex justify-center lg:justify-center"
                     >
                         <img
-                            src="https://vegasviprides.com/wp-content/uploads/2024/11/Vegas-Vip-Rides-RST.png"
+                            src="/logo.jpeg"
                             alt="Vegas VIP Rides Logo"
                             className="w-full max-w-[500px] h-auto drop-shadow-[0_0_30px_rgba(212,175,55,0.2)]"
                         />

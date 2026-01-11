@@ -41,12 +41,7 @@ const Navbar = () => {
                 {/* Logo Placeholder - The image shown had a circular gold logo */}
                 <div className="flex-shrink-0">
                     <Link href="/" className="flex items-center space-x-2">
-                        <div className="w-12 h-12 rounded-full border-2 border-[#B09C6D] flex items-center justify-center bg-black/40">
-                            <span className="text-[#B09C6D] font-bold text-xs text-center">VIP</span>
-                        </div>
-                        <span className="text-xl md:text-2xl font-bold tracking-tighter text-white hover:opacity-80 transition-opacity">
-                            VEGAS <span className="text-[#B09C6D]">VIP</span> RIDES
-                        </span>
+                        <img src="/logo.jpeg" alt="Vegas VIP Rides" className=" h-20 w-40" />
                     </Link>
                 </div>
 
