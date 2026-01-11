@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const Hero = () => {
     return (
-        <section className="relative w-full min-h-screen lg:h-[90vh] flex items-center overflow-hidden bg-black pt-[8%] sm:pt-[6%]">
+        <section className="relative w-full min-h-screen lg:h-[90vh] flex items-center overflow-hidden bg-black pt-[15%] sm:pt-[6%]">
             {/* Background Image with Overlay */}
             <div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000"
