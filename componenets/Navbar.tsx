@@ -36,7 +36,7 @@ const Navbar = () => {
                 "bg-black bg-transparent"
             )}
         >
-            <div className="absolute inset-0 bg-black/64 -z-10 "></div>
+            <div className="absolute inset-0 bg-black/50 -z-10 "></div>
             <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center text-white">
                 {/* Logo Placeholder - The image shown had a circular gold logo */}
                 <div className="flex-shrink-0">

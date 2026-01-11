@@ -52,7 +52,7 @@ const BookingRide = () => {
             <div className="max-w-7xl mx-auto">
                 <div className="bg-[#111111] border border-white/5 rounded-2xl p-6 md:p-10 shadow-2xl">
                     {/* Tabs */}
-                    <div className="flex bg-white/5 p-1 rounded-xl w-fit mb-10 overflow-hidden">
+                    <div className="flex flex-col sm:flex-row bg-white/5 p-1 rounded-xl w-full sm:w-fit mb-10 overflow-hidden">
                         {tabs.map((tab) => (
                             <button
                                 key={tab}
@@ -92,7 +92,7 @@ const BookingRide = () => {
                                     </div>
 
                                     <div className="flex items-center justify-center p-4 bg-[#D4AF37]/10 rounded-full">
-                                        {/* <ArrowsUpDown className="w-6 h-6 text-[#D4AF37]" /> */}
+                                        
                                     </div>
 
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">

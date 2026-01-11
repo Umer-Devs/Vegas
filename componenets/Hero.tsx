@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const Hero = () => {
     return (
-        <section className="relative w-full min-h-screen lg:h-[90vh] flex items-center overflow-hidden bg-black pt-[6%]">
+        <section className="relative w-full min-h-screen lg:h-[90vh] flex items-center overflow-hidden bg-black pt-[8%] sm:pt-[6%]">
             {/* Background Image with Overlay */}
             <div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000"
@@ -17,7 +17,7 @@ const Hero = () => {
 
             <div className="relative z-10 max-w-7xl mx-auto px-6  w-full">
                 <div className="grid grid-cols-1 lg:grid-cols-5  items-center">
-                    <div className="lg:col-span-3 flex flex-col items-center lg:items-start  lg:text-left">
+                    <div className="lg:col-span-3 flex flex-col items-center lg:items-start  text-center lg:text-left">
                         <motion.div
                             initial={{ opacity: 0, x: -30 }}
                             whileInView={{ opacity: 1, x: 0 }}
@@ -49,7 +49,7 @@ const Hero = () => {
                         </motion.div>
                     </div>
 
-                    <div className=" col-span-2 relative flex justify-end ">
+                    <div className=" col-span-2 relative flex justify-center ">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9, y: 20 }}
                             whileInView={{ opacity: 1, scale: 1, y: 0 }}
