@@ -32,7 +32,7 @@ const Navbar = () => {
     return (
         <nav
             className={cn(
-                "fixed top-0 left-0 w-full z-50 transition-all py-16 duration-300",
+                "fixed top-0 left-0 w-full z-50 transition-all py-12 duration-300",
                 "bg-black bg-transparent"
             )}
         >
@@ -41,7 +41,7 @@ const Navbar = () => {
                 {/* Logo Placeholder - The image shown had a circular gold logo */}
                 <div className="flex-shrink-0">
                     <Link href="/" className="flex items-center space-x-2">
-                        <img src="/logo.jpeg" alt="LV ELITE CONCIERGE" className=" h-20 w-40" />
+                        <img src="/logo.png" alt="LV ELITE CONCIERGE" className=" h-24 w-40" />
                     </Link>
                 </div>
 

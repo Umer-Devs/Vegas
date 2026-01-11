@@ -11,7 +11,7 @@ const Footer = () => {
                 <div className="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 text-center md:text-left">
                     {/* Left Side: Branding & Copyright */}
                     <div className="flex flex-col space-y-4">
-                        <img src="./logo.jpeg" className="h-20 w-40" alt="" />
+                        <img src="./logo.png" className="h-20 w-40" alt="" />
                         <div className="text-gray-500 text-sm font-light leading-relaxed max-w-xs">
                             <p>© 2026 vegasviprides.com.</p>
                             <p>Created by Wixerp.com</p>
@@ -20,7 +20,7 @@ const Footer = () => {
 
                     {/* Center: Navigation Links */}
                     <nav className="flex items-center space-x-8 text-sm font-medium tracking-wide">
-                        
+
                     </nav>
 
                     {/* Right Side: Social Media Icons */}
