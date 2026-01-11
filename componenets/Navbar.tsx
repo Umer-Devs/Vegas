@@ -41,11 +41,11 @@ const Navbar = () => {
                 {/* Logo Placeholder - The image shown had a circular gold logo */}
                 <div className="flex-shrink-0">
                     <Link href="/" className="flex items-center space-x-2">
-                        <div className="w-12 h-12 rounded-full border-2 border-[#D4AF37] flex items-center justify-center bg-black/40">
-                            <span className="text-[#D4AF37] font-bold text-xs text-center">VIP</span>
+                        <div className="w-12 h-12 rounded-full border-2 border-[#B09C6D] flex items-center justify-center bg-black/40">
+                            <span className="text-[#B09C6D] font-bold text-xs text-center">VIP</span>
                         </div>
-                        <span className="text-xl md:text-2xl font-bold tracking-tighter text-white">
-                            VEGAS <span className="text-[#D4AF37]">VIP</span> RIDES
+                        <span className="text-xl md:text-2xl font-bold tracking-tighter text-white hover:opacity-80 transition-opacity">
+                            VEGAS <span className="text-[#B09C6D]">VIP</span> RIDES
                         </span>
                     </Link>
                 </div>
@@ -57,8 +57,8 @@ const Navbar = () => {
                             key={link.name}
                             href={link.href}
                             className={cn(
-                                "text-sm font-semibold tracking-widest transition-colors hover:text-[#b08a32]",
-                                link.name === "HOME" ? "text-[#D4AF37]" : "text-white"
+                                "text-sm font-semibold tracking-widest hover:text-[#B09C6D] transition-colors uppercase",
+                                link.name === "HOME" ? "text-[#B09C6D]" : "text-white"
                             )}
                         >
                             {link.name}
@@ -99,27 +99,24 @@ const Navbar = () => {
                             transition={{ type: "spring", damping: 25, stiffness: 200 }}
                             className="fixed top-0 right-0 h-full w-[80%] max-w-sm bg-[#0a0a0a] border-l border-white/10 z-[110] p-10 flex flex-col md:hidden shadow-2xl"
                         >
-                            <div className="flex justify-between items-center mb-16">
-                                <div className="w-10 h-10 rounded-full border border-[#D4AF37] flex items-center justify-center">
-                                    <span className="text-[#D4AF37] font-bold text-[10px]">VIP</span>
+                            <div className="flex items-center space-x-3 mb-12">
+                                <div className="w-10 h-10 rounded-full border border-[#B09C6D] flex items-center justify-center">
+                                    <span className="text-[#B09C6D] font-bold text-[10px]">VIP</span>
                                 </div>
-                                <button
-                                    onClick={() => setIsOpen(false)}
-                                    className="text-white p-2 hover:bg-white/10 rounded-full transition-colors"
-                                >
-                                    <X size={32} />
-                                </button>
+                                <div className="text-[#B09C6D] text-lg font-semibold tracking-widest">
+                                    VEGAS VIP RIDES
+                                </div>
                             </div>
 
-                            <div className="flex flex-col space-y-10">
+                            <div className="flex flex-col space-y-8">
                                 {navLinks.map((link) => (
                                     <Link
                                         key={link.name}
                                         href={link.href}
                                         onClick={() => setIsOpen(false)}
                                         className={cn(
-                                            "text-2xl font-bold tracking-[0.2em] transition-colors",
-                                            link.name === "HOME" ? "text-[#D4AF37]" : "text-white hover:text-[#D4AF37]"
+                                            "text-3xl font-bold tracking-tighter transition-colors uppercase",
+                                            link.name === "HOME" ? "text-[#B09C6D]" : "text-white hover:text-[#B09C6D]"
                                         )}
                                     >
                                         {link.name}

@@ -35,12 +35,12 @@ const CtaOne = () => {
                         >
                             <h2 className="text-white font-serif text-4xl md:text-6xl lg:text-7xl tracking-wider leading-tight uppercase">
                                 WORLD CLASS <br />
-                                <span className="text-[#D4AF37]">SERVICE</span>
+                                <span className="text-[#B09C6D]">SERVICE</span>
                             </h2>
                         </motion.div>
 
                         <motion.div
-                        className="pl-6"
+                            className="pl-6"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-100px" }}
@@ -48,7 +48,7 @@ const CtaOne = () => {
                         >
                             <Link
                                 href="/book"
-                                className="group flex items-center space-x-2 text-[#D4AF37] text-lg md:text-xl tracking-[0.2em] uppercase font-light hover:text-white transition-colors duration-300"
+                                className="group flex items-center space-x-2 text-[#B09C6D] text-lg md:text-xl tracking-[0.2em] uppercase font-light hover:text-white transition-colors duration-300"
                             >
                                 <span>Book Today</span>
                                 <ChevronRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />

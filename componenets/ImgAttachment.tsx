@@ -20,7 +20,7 @@ const ImgAttachment = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 1, ease: "easeOut" }}
                 >
-                    <h2 className="text-[#D4AF37] font-serif text-4xl md:text-6xl mb-12 tracking-wide">
+                    <h2 className="text-[#B09C6D] font-serif text-4xl md:text-6xl mb-12 tracking-wide">
                         Book Services Today
                     </h2>
                 </motion.div>

@@ -28,7 +28,7 @@ const CtaTwo = () => {
                             viewport={{ once: true }}
                             transition={{ duration: 1, ease: "easeOut" }}
                         >
-                            <h2 className="text-[#D4AF37] font-serif text-3xl md:text-5xl lg:text-6xl tracking-tight leading-tight">
+                            <h2 className="text-[#B09C6D] font-serif text-3xl md:text-5xl lg:text-6xl tracking-tight leading-tight">
                                 Connect for Exclusive <br /> VIP Experience
                             </h2>
                             <p className="text-gray-300 text-base md:text-lg max-w-5xl font-light leading-relaxed">
@@ -61,15 +61,15 @@ const CtaTwo = () => {
                                 transition={{ duration: 0.8, delay: 0.5 }}
                                 className="space-y-4"
                             >
-                                <h3 className="text-[#D4AF37] font-serif text-xl md:text-2xl tracking-wide">Call us now</h3>
+                                <h3 className="text-[#B09C6D] font-serif text-xl md:text-2xl tracking-wide">Call us now</h3>
                                 <div className="space-y-2 text-gray-400 font-light tracking-wide text-sm md:text-base">
                                     <p className="flex items-center space-x-3 group cursor-pointer hover:text-white transition-colors">
-                                        <Phone className="w-4 h-4 text-[#D4AF37]" />
-                                        <span>Mobile phone: +1 (307) 225-2444</span>
+                                        <Phone className="w-4 h-4 text-[#B09C6D]" />
+                                        <a href="tel:+13072252444" className="text-white hover:text-[#B09C6D] transition-colors tracking-widest">+1 (307) 225-2444</a>
                                     </p>
                                     <p className="flex items-center space-x-3 group cursor-pointer hover:text-white transition-colors">
-                                        <Phone className="w-4 h-4 text-[#D4AF37]" />
-                                        <span>Concierge Line: +1 (307) 300-2099</span>
+                                        <Phone className="w-4 h-4 text-[#B09C6D]" />
+                                        <a href="tel:+13073002099" className="text-white hover:text-[#B09C6D] transition-colors tracking-widest">+1 (307) 300-2099</a>
                                     </p>
                                 </div>
                             </motion.div>
@@ -81,7 +81,7 @@ const CtaTwo = () => {
                                 transition={{ duration: 0.8, delay: 0.6 }}
                                 className="space-y-4"
                             >
-                                <h3 className="text-[#D4AF37] font-serif text-xl md:text-2xl tracking-wide">Get our preferred service</h3>
+                                <h3 className="text-[#B09C6D] font-serif text-xl md:text-2xl tracking-wide">Get our preferred service</h3>
                                 <p className="text-gray-400 font-light tracking-wide text-sm md:text-base leading-relaxed italic">
                                     "Redefining modern luxury transportation through unwavering dedication to excellence and client satisfaction."
                                 </p>

@@ -25,7 +25,7 @@ const Hero = () => {
                             transition={{ duration: 1, ease: "easeOut" }}
                             className="flex flex-col"
                         >
-                            <h2 className="text-[#D4AF37] font-serif text-lg md:text-3xl tracking-[0.2em] md:tracking-[0.3em] mb-2 uppercase drop-shadow-lg">
+                            <h2 className="text-[#B09C6D] font-serif text-lg md:text-3xl tracking-[0.2em] md:tracking-[0.3em] mb-2 uppercase drop-shadow-lg">
                                 VEGAS VIP RIDES
                             </h2>
                             <h1 className="text-white font-bold text-4xl md:text-7xl lg:text-8xl tracking-tighter leading-[1.1] md:leading-[0.9] mb-4 md:mb-6 drop-shadow-2xl">
@@ -42,7 +42,7 @@ const Hero = () => {
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
                         >
-                            <button className="group relative px-8 md:px-10 py-3 md:py-5 border-2 border-white text-white font-bold tracking-[0.1em] md:tracking-[0.2em] text-xs md:text-base overflow-hidden transition-all duration-300 hover:text-black hover:border-[#D4AF37]">
+                            <button className="group relative px-8 md:px-10 py-3 md:py-5 border-2 border-white text-white font-bold tracking-[0.1em] md:tracking-[0.2em] text-xs md:text-base overflow-hidden transition-all duration-300 hover:text-black hover:border-[#B09C6D]">
                                 <span className="relative z-10">BOOK PRIVATELY</span>
                                 <div className="absolute inset-0 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
                             </button>
@@ -57,7 +57,7 @@ const Hero = () => {
                             transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
                             className="relative mt-10 sm:mt-0"
                         >
-                            
+
                             <img
                                 src="https://vegasviprides.com/wp-content/uploads/2024/11/images-1.png"
                                 alt="Luxury SUV"
