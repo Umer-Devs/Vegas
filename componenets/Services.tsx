@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Bell, Lock, ShieldCheck, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { service1, service2, service3 } from "@/public";
+import { logo, service1, service2, service3 } from "@/public";
 
 const serviceData = [
   {
@@ -17,7 +17,7 @@ const serviceData = [
   },
   {
     title: "PRESTIGE",
-    icon: service2,
+    icon: logo,
     description: "LV Elite Concierge delivers prestige in every ride, combining professionalism, discretion, and attention to detail to ensure each journey is exceptional, refined, and unforgettable.",
     linkText: "Book Today",
     href: "/book"
