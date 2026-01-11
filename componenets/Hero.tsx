@@ -26,7 +26,7 @@ const Hero = () => {
                             className="flex flex-col"
                         >
                             <h2 className="text-[#B09C6D] font-serif text-lg md:text-3xl tracking-[0.2em] md:tracking-[0.3em] mb-2 uppercase drop-shadow-lg">
-                                VEGAS VIP RIDES
+                                LV ELITE CONCIERGE
                             </h2>
                             <h1 className="text-white font-bold text-4xl md:text-7xl lg:text-8xl tracking-tighter leading-[1.1] md:leading-[0.9] mb-4 md:mb-6 drop-shadow-2xl">
                                 LUXURY RIDES

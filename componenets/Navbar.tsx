@@ -41,7 +41,7 @@ const Navbar = () => {
                 {/* Logo Placeholder - The image shown had a circular gold logo */}
                 <div className="flex-shrink-0">
                     <Link href="/" className="flex items-center space-x-2">
-                        <img src="/logo.jpeg" alt="Vegas VIP Rides" className=" h-20 w-40" />
+                        <img src="/logo.jpeg" alt="LV ELITE CONCIERGE" className=" h-20 w-40" />
                     </Link>
                 </div>
 
@@ -99,7 +99,7 @@ const Navbar = () => {
                                     <span className="text-[#B09C6D] font-bold text-[10px]">VIP</span>
                                 </div>
                                 <div className="text-[#B09C6D] text-lg font-semibold tracking-widest">
-                                    VEGAS VIP RIDES
+                                    LV ELITE CONCIERGE
                                 </div>
                             </div>
 
@@ -124,7 +124,7 @@ const Navbar = () => {
                                     Luxury Experience
                                 </p>
                                 <div className="text-[#D4AF37] text-lg font-semibold tracking-widest">
-                                    VEGAS VIP RIDES
+                                    LV ELITE CONCIERGE
                                 </div>
                             </div>
                         </motion.div>

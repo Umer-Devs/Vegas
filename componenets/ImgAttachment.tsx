@@ -47,7 +47,7 @@ const ImgAttachment = () => {
                     transition={{ duration: 1, delay: 0.4 }}
                 >
                     <p className="text-gray-200 text-lg md:text-xl lg:text-2xl leading-relaxed font-light tracking-wider">
-                        Reach out to Vegas VIP Rides to elevate your travel experience. Our team is ready to assist with
+                        Reach out to LV ELITE CONCIERGE to elevate your travel experience. Our team is ready to assist with
                         personalized bookings, tailored itineraries, and top-tier service. Contact us for seamless
                         arrangements and enjoy luxury, reliability, and unmatched professionalism. Contact us to find
                         out how we can make your dreams come true.

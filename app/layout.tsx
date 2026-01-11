@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Vegas VIP Rides",
+  title: "LV ELITE CONCIERGE",
   description: "Luxury Transportation in Las Vegas",
 };
 

@@ -9,22 +9,22 @@ const serviceData = [
   {
     title: "LUXURY SERVICE",
     icon: <Bell className="w-12 h-12 text-[#B09C6D]" />,
-    description: "Vegas VIP Rides offers an unparalleled luxury transportation experience in Las Vegas, featuring premium vehicles, professional chauffeurs, and personalized service. Enjoy comfort, elegance, and exclusivity as you explore the city in style.",
+    description: "LV ELITE CONCIERGE offers an unparalleled luxury transportation experience in Las Vegas, featuring premium vehicles, professional chauffeurs, and personalized service. Enjoy comfort, elegance, and exclusivity as you explore the city in style.",
     linkText: "Please connect with us",
     href: "/contact"
   },
   {
     title: "PRESTIGE",
     icon: <ShieldCheck className="w-12 h-12 text-[#B09C6D]" />,
-    description: "Vegas VIP Rides maintains prestigious standards through meticulous attention, professionalism, and client satisfaction. Our chauffeurs deliver a first-class experience, ensuring comfort, reliability, and discretion, making each ride an extraordinary journey.",
+    description: "LV ELITE CONCIERGE maintains prestigious standards through meticulous attention, professionalism, and client satisfaction. Our chauffeurs deliver a first-class experience, ensuring comfort, reliability, and discretion, making each ride an extraordinary journey.",
     linkText: "Book Today",
     href: "/book"
   },
   {
     title: "DEDICATION",
     icon: <Lock className="w-12 h-12 text-[#B09C6D]" />,
-    description: "At Vegas VIP Rides, we are dedicated to exceeding client expectations through unwavering commitment to excellence. Our team ensures every detail is perfect, providing exceptional service and a luxurious experience tailored to your needs.",
-    linkText: "Choose Vegas VIP Rides",
+    description: "At LV ELITE CONCIERGE, we are dedicated to exceeding client expectations through unwavering commitment to excellence. Our team ensures every detail is perfect, providing exceptional service and a luxurious experience tailored to your needs.",
+    linkText: "Choose LV ELITE CONCIERGE",
     href: "/services"
   }
 ];
@@ -51,7 +51,7 @@ const Services = () => {
             transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
             className="text-gray-300 text-lg md:text-xl leading-relaxed font-light tracking-wide"
           >
-            Vegas VIP Rides excels in luxury transportation, providing elegance, comfort, and exclusivity with
+            LV ELITE CONCIERGE excels in luxury transportation, providing elegance, comfort, and exclusivity with
             professional chauffeurs, premium vehicles, and personalized service for memorable journeys.
           </motion.p>
         </div>

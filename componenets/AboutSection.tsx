@@ -17,7 +17,7 @@ const AboutSection = () => {
           transition={{ duration: 1, ease: "easeOut" }}
         >
           <h2 className="text-[#B09C6D] font-serif text-3xl md:text-5xl lg:text-6xl mb-10 tracking-wider">
-            Book with VEGAS VIP RIDES
+            Book with LV ELITE CONCIERGE
           </h2>
         </motion.div>
 
@@ -28,7 +28,7 @@ const AboutSection = () => {
           transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
         >
           <p className="text-gray-200 text-lg md:text-2xl lg:text-3xl tracking-wider leading-clamp font-light max-w-6xl mx-auto">
-            At Vegas VIP Rides, our mission is to redefine luxury transportation by delivering
+            At LV ELITE CONCIERGE, our mission is to redefine luxury transportation by delivering
             exceptional experiences marked by elegance, comfort, and exclusivity. Through
             professional service and meticulous attention to detail, we aim to create
             unforgettable journeys for every client.

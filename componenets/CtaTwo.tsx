@@ -32,7 +32,7 @@ const CtaTwo = () => {
                                 Connect for Exclusive <br /> VIP Experience
                             </h2>
                             <p className="text-gray-300 text-base md:text-lg max-w-5xl font-light leading-relaxed">
-                                Experience luxury with Vegas VIP Rides by getting in touch today. Our exclusive VIP service
+                                Experience luxury with LV ELITE CONCIERGE by getting in touch today. Our exclusive VIP service
                                 offers personalized attention, seamless bookings, and exceptional comfort, ensuring every
                                 journey is tailored to your preferences and exceeds expectations.
                             </p>
