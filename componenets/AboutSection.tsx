@@ -16,7 +16,7 @@ const AboutSection = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          <h2 className="text-[#B09C6D] font-serif text-3xl md:text-5xl lg:text-6xl mb-10 tracking-wider">
+          <h2 className="text-[#B09C6D] font-serif text-4xl md:text-5xl lg:text-6xl mb-10 tracking-wider">
             Book with LV ELITE CONCIERGE
           </h2>
         </motion.div>
@@ -27,11 +27,8 @@ const AboutSection = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
         >
-          <p className="text-gray-200 text-lg md:text-2xl lg:text-3xl tracking-wider leading-clamp font-light max-w-6xl mx-auto">
-            At LV ELITE CONCIERGE, our mission is to redefine luxury transportation by delivering
-            exceptional experiences marked by elegance, comfort, and exclusivity. Through
-            professional service and meticulous attention to detail, we aim to create
-            unforgettable journeys for every client.
+          <p className="text-gray-200 text-lg md:text-2xl  tracking-wider leading-clamp font-light max-w-6xl mx-auto">
+           LV Elite Concierge delivers elevated transportation experiences defined by elegance, comfort, and exclusivity. Every journey is thoughtfully designed to meet the highest standards of refinement, ensuring a seamless blend of style, professionalism, and discretion
           </p>
         </motion.div>
         <button className=" mt-[4%] group relative px-8 md:px-10 py-3 md:py-5 border-2 border-white text-white font-bold tracking-[0.1em] md:tracking-[0.2em] text-xs md:text-base overflow-hidden transition-all duration-300 hover:text-black hover:border-[#B09C6D]">

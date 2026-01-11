@@ -4,30 +4,33 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Bell, Lock, ShieldCheck, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+import { service1, service2, service3 } from "@/public";
 
 const serviceData = [
   {
     title: "LUXURY SERVICE",
-    icon: <Bell className="w-12 h-12 text-[#B09C6D]" />,
-    description: "LV ELITE CONCIERGE offers an unparalleled luxury transportation experience in Las Vegas, featuring premium vehicles, professional chauffeurs, and personalized service. Enjoy comfort, elegance, and exclusivity as you explore the city in style.",
+    icon: service1,
+    description: "Experience unparalleled luxury with LV Elite Concierge, where premium vehicles, professional chauffeurs, and personalized service create elegant, comfortable, and exclusive journeys.",
     linkText: "Please connect with us",
     href: "/contact"
   },
   {
     title: "PRESTIGE",
-    icon: <ShieldCheck className="w-12 h-12 text-[#B09C6D]" />,
-    description: "LV ELITE CONCIERGE maintains prestigious standards through meticulous attention, professionalism, and client satisfaction. Our chauffeurs deliver a first-class experience, ensuring comfort, reliability, and discretion, making each ride an extraordinary journey.",
+    icon: service2,
+    description: "LV Elite Concierge delivers prestige in every ride, combining professionalism, discretion, and attention to detail to ensure each journey is exceptional, refined, and unforgettable.",
     linkText: "Book Today",
     href: "/book"
   },
   {
     title: "DEDICATION",
-    icon: <Lock className="w-12 h-12 text-[#B09C6D]" />,
-    description: "At LV ELITE CONCIERGE, we are dedicated to exceeding client expectations through unwavering commitment to excellence. Our team ensures every detail is perfect, providing exceptional service and a luxurious experience tailored to your needs.",
+    icon: service3,
+    description: "Our dedication at LV Elite Concierge ensures every journey exceeds expectations, with flawless service, luxury vehicles, and thoughtful details crafted for an extraordinary experience.",
     linkText: "Choose LV ELITE CONCIERGE",
     href: "/services"
   }
 ];
+
 
 const Services = () => {
   return (
@@ -51,13 +54,12 @@ const Services = () => {
             transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
             className="text-gray-300 text-lg md:text-xl leading-relaxed font-light tracking-wide"
           >
-            LV ELITE CONCIERGE excels in luxury transportation, providing elegance, comfort, and exclusivity with
-            professional chauffeurs, premium vehicles, and personalized service for memorable journeys.
+           LV Elite Concierge sets the standard in luxury transportation, offering refined elegance, superior comfort, and true exclusivity. With professional chauffeurs, premium vehicles, and personalized service, we create seamless journeys designed to be truly unforgettable
           </motion.p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {serviceData.map((service, index) => (
             <motion.div
               key={index}
@@ -71,7 +73,7 @@ const Services = () => {
               <div className="relative mb-4">
                 <div className="absolute inset-0 bg-[#B09C6D]/20 blur-2xl rounded-full scale-0 group-hover:scale-125 transition-transform duration-500"></div>
                 <div className="relative z-10 p-4 transition-transform duration-500 group-hover:scale-110">
-                  {service.icon}
+                  <Image className="w-30 h-20" src={service.icon} alt={service.title} />
                 </div>
               </div>
 

@@ -11,7 +11,7 @@ const CtaTwo = () => {
             {/* Background Image with Gradient Overlay on the right */}
             <div className="absolute inset-0 z-0">
                 <div
-                    className="absolute right-0 top-0 w-full lg:w-[40%] h-full bg-cover bg-right lg:bg-right bg-no-repeat opacity-60 lg:opacity-100"
+                    className="absolute right-0 top-0 w-full lg:w-[30%] h-full bg-cover bg-right lg:bg-right bg-no-repeat opacity-60 lg:opacity-100"
                     style={{ backgroundImage: 'url("https://vegasviprides.com/wp-content/uploads/2024/10/2022-Suburban-in-Orleans.jpg")' }}
                 >
                     {/* Gradient to fade the image into the black background on the left */}
@@ -19,7 +19,7 @@ const CtaTwo = () => {
                 </div>
             </div>
 
-            <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full py-20 lg:py-0 my-8">
+            <div className="relative z-10 px-6 md:px-12 lg:px-30 w-full py-20 lg:py-0 my-8">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                     <div className="lg:col-span-8 flex flex-col space-y-8">
                         <motion.div
@@ -28,13 +28,11 @@ const CtaTwo = () => {
                             viewport={{ once: true }}
                             transition={{ duration: 1, ease: "easeOut" }}
                         >
-                            <h2 className="text-[#B09C6D] font-serif text-3xl md:text-5xl lg:text-6xl tracking-tight leading-tight">
-                                Connect for Exclusive <br /> VIP Experience
+                            <h2 className="text-[#B09C6D] font-serif text-4xl md:text-5xl lg:text-6xl tracking-tight leading-tight">
+                               Unlock Your VIP Journey
                             </h2>
                             <p className="text-gray-300 text-base md:text-lg max-w-5xl font-light leading-relaxed">
-                                Experience luxury with LV ELITE CONCIERGE by getting in touch today. Our exclusive VIP service
-                                offers personalized attention, seamless bookings, and exceptional comfort, ensuring every
-                                journey is tailored to your preferences and exceeds expectations.
+                                Experience ultimate luxury with LV Elite Concierge. Our exclusive VIP service delivers personalized attention, seamless bookings, and exceptional comfort, crafting every journey to exceed your expectations
                             </p>
                         </motion.div>
 
@@ -65,7 +63,7 @@ const CtaTwo = () => {
                                 <div className="space-y-2 text-gray-400 font-light tracking-wide text-sm md:text-base">
                                     <p className="flex items-center space-x-3 group cursor-pointer hover:text-white transition-colors">
                                         <Phone className="w-4 h-4 text-[#B09C6D]" />
-                                        <a href="tel:+13072252444" className="text-white hover:text-[#B09C6D] transition-colors tracking-widest">702-800-9093</a>
+                                        <a href="tel:+17028009093" className="text-white hover:text-[#B09C6D] transition-colors tracking-widest">+1 702-800-9093</a>
                                     </p>
                                 </div>
                             </motion.div>
@@ -77,13 +75,19 @@ const CtaTwo = () => {
                                 transition={{ duration: 0.8, delay: 0.6 }}
                                 className="space-y-4"
                             >
-                                <h3 className="text-[#B09C6D] font-serif text-xl md:text-2xl tracking-wide">Get our preferred service</h3>
-                                <p className="text-gray-400 font-light tracking-wide text-sm md:text-base leading-relaxed italic">
-                                    "Redefining modern luxury transportation through unwavering dedication to excellence and client satisfaction."
-                                </p>
+                                <h3 className="text-[#B09C6D] font-serif text-xl md:text-2xl tracking-wide">
+  Experience Our Premier Service
+</h3>
+<p className="text-gray-400 font-light tracking-wide text-sm md:text-base leading-relaxed italic">
+  "Elevating modern luxury transportation with impeccable service, personalized attention, and a commitment to flawless journeys."
+</p>
+
                             </motion.div>
                         </div>
                     </div>
+                </div>
+                <div>
+                    <h1 className="text-[#B09C6D] font-serif text-4xl md:text-5xl lg:text-6xl text-center mt-6  tracking-tight leading-tight">Book Services Today</h1>
                 </div>
             </div>
 

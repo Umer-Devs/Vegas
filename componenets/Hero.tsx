@@ -8,11 +8,11 @@ const Hero = () => {
         <section className="relative w-full min-h-screen lg:h-[90vh] flex items-center overflow-hidden bg-black pt-[15%] sm:pt-[6%]">
             {/* Background Image with Overlay */}
             <div
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000"
+                className="absolute inset-0 bg-cover bg-bottom bg-no-repeat transition-all duration-1000"
                 style={{ backgroundImage: 'url("https://vegasviprides.com/wp-content/uploads/2024/10/23-Chevrolet-Suburban-Cargo-Space.webp")' }}
             >
                 {/* Responsive overlay: More aggressive on mobile to keep text readable */}
-                <div className="absolute inset-0 bg-black/20 lg:bg-gradient-to-r lg:from-black/95 lg:via-black/40 lg:to-transparent"></div>
+                <div className="absolute inset-0 bg-black/0 lg:bg-gradient-to-r lg:from-black/95 lg:via-black/40 lg:to-transparent"></div>
             </div>
 
             <div className="relative z-10 max-w-7xl mx-auto px-6  w-full">
@@ -25,14 +25,14 @@ const Hero = () => {
                             transition={{ duration: 1, ease: "easeOut" }}
                             className="flex flex-col"
                         >
-                            <h2 className="text-[#B09C6D] font-serif text-lg md:text-3xl tracking-[0.2em] md:tracking-[0.3em] mb-2 uppercase drop-shadow-lg">
+                            <h2 className="text-[#B09C6D] font-serif text-lg md:text-3xl tracking-[0.2em] mb-4 uppercase drop-shadow-lg">
                                 LV ELITE CONCIERGE
                             </h2>
-                            <h1 className="text-white font-bold text-4xl md:text-7xl lg:text-8xl tracking-tighter leading-[1.1] md:leading-[0.9] mb-4 md:mb-6 drop-shadow-2xl">
-                                LUXURY RIDES
+                            <h1 className="text-white font-bold text-4xl md:text-7xl   leading-[1.1] md:leading-[0.9] mb-4 md:mb-6 drop-shadow-2xl">
+                                Signature Rides
                             </h1>
                             <p className="text-gray-200 text-sm md:text-xl lg:text-2xl tracking-[0.2em] md:tracking-[0.4em] font-light mb-8 md:mb-12 uppercase drop-shadow-md">
-                                Exceptional Service
+                                Luxury Perfected
                             </p>
                         </motion.div>
 

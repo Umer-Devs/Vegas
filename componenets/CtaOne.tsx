@@ -33,7 +33,7 @@ const CtaOne = () => {
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ duration: 1, ease: "easeOut" }}
                         >
-                            <h2 className="text-white font-serif text-4xl md:text-6xl lg:text-7xl tracking-wider leading-tight uppercase">
+                            <h2 className="text-white font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl  tracking-wider leading-tight uppercase">
                                 WORLD CLASS <br />
                                 <span className="text-[#B09C6D]">SERVICE</span>
                             </h2>

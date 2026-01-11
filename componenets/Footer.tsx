@@ -13,14 +13,22 @@ const Footer = () => {
                     <div className="flex flex-col space-y-4">
                         <img src="./logo.png" className="h-20 w-40" alt="" />
                         <div className="text-gray-500 text-sm font-light leading-relaxed max-w-xs">
-                            <p>© 2026 vegasviprides.com.</p>
+                            <p>© 2026 lveliteconcierge.com</p>
                             <p>Created by Wixerp.com</p>
                         </div>
                     </div>
 
                     {/* Center: Navigation Links */}
-                    <nav className="flex items-center space-x-8 text-sm font-medium tracking-wide">
-
+                    <nav className="flex items-center space-x-8 text-sm font-medium tracking-wide uppercase">
+                        <Link href="/" className="text-white hover:text-gray-300 transition-colors">
+                            Home
+                        </Link>
+                        <Link href="/contact" className="text-gray-400 hover:text-white transition-colors">
+                            Contact
+                        </Link>
+                        <Link href="/services" className="text-gray-400 hover:text-white transition-colors">
+                            Service
+                        </Link>
                     </nav>
 
                     {/* Right Side: Social Media Icons */}
