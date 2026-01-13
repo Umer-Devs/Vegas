@@ -2,9 +2,18 @@
 
 import React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Facebook, Instagram } from "lucide-react";
 
 const Footer = () => {
+    const pathname = usePathname();
+
+    const footerLinks = [
+        { name: "Home", href: "/" },
+        { name: "Contact", href: "/contact" },
+        { name: "Service", href: "/services" },
+    ];
+
     return (
         <footer className="bg-black py-16 border-t border-white/5">
             <div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -20,15 +29,19 @@ const Footer = () => {
 
                     {/* Center: Navigation Links */}
                     <nav className="flex items-center space-x-8 text-sm font-medium tracking-wide uppercase">
-                        <Link href="/" className="text-white hover:text-gray-300 transition-colors">
-                            Home
-                        </Link>
-                        <Link href="/contact" className="text-gray-400 hover:text-white transition-colors">
-                            Contact
-                        </Link>
-                        <Link href="/services" className="text-gray-400 hover:text-white transition-colors">
-                            Service
-                        </Link>
+                        {footerLinks.map((link) => {
+                            const isActive = pathname === link.href;
+                            return (
+                                <Link
+                                    key={link.name}
+                                    href={link.href}
+                                    className={`${isActive ? "text-[#B09C6D]" : "text-gray-400 hover:text-white"
+                                        } transition-colors`}
+                                >
+                                    {link.name}
+                                </Link>
+                            );
+                        })}
                     </nav>
 
                     {/* Right Side: Social Media Icons */}

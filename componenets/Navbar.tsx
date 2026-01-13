@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -14,6 +15,7 @@ function cn(...inputs: ClassValue[]) {
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const pathname = usePathname();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -47,18 +49,21 @@ const Navbar = () => {
 
                 {/* Desktop Links */}
                 <div className="hidden md:flex items-center space-x-12">
-                    {navLinks.map((link) => (
-                        <Link
-                            key={link.name}
-                            href={link.href}
-                            className={cn(
-                                "text-sm font-semibold tracking-widest hover:text-[#B09C6D] transition-colors uppercase",
-                                link.name === "HOME" ? "text-[#B09C6D]" : "text-white"
-                            )}
-                        >
-                            {link.name}
-                        </Link>
-                    ))}
+                    {navLinks.map((link) => {
+                        const isActive = pathname === link.href;
+                        return (
+                            <Link
+                                key={link.name}
+                                href={link.href}
+                                className={cn(
+                                    "text-sm font-semibold tracking-widest hover:text-[#B09C6D] transition-colors uppercase",
+                                    isActive ? "text-[#B09C6D]" : "text-white"
+                                )}
+                            >
+                                {link.name}
+                            </Link>
+                        );
+                    })}
                 </div>
 
                 {/* Mobile Menu Icon */}
@@ -108,19 +113,22 @@ const Navbar = () => {
                             </div>
 
                             <div className="flex flex-col space-y-8">
-                                {navLinks.map((link) => (
-                                    <Link
-                                        key={link.name}
-                                        href={link.href}
-                                        onClick={() => setIsOpen(false)}
-                                        className={cn(
-                                            "font-bold  transition-colors uppercase",
-                                            link.name === "HOME" ? "text-[#B09C6D]" : "text-white hover:text-[#B09C6D]"
-                                        )}
-                                    >
-                                        {link.name}
-                                    </Link>
-                                ))}
+                                {navLinks.map((link) => {
+                                    const isActive = pathname === link.href;
+                                    return (
+                                        <Link
+                                            key={link.name}
+                                            href={link.href}
+                                            onClick={() => setIsOpen(false)}
+                                            className={cn(
+                                                "font-bold transition-colors uppercase",
+                                                isActive ? "text-[#B09C6D]" : "text-white hover:text-[#B09C6D]"
+                                            )}
+                                        >
+                                            {link.name}
+                                        </Link>
+                                    );
+                                })}
                             </div>
                         </motion.div>
                     </>

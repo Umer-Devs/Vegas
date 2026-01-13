@@ -1,4 +1,10 @@
-export {default as service1} from "./service1.webp";
-export {default as service2} from "./service2.webp";
-export {default as service3} from "./service3.webp";
-export {default as logo} from "./logo.png";
+export { default as service1 } from "./service1.webp";
+export { default as service2 } from "./service2.webp";
+export { default as service3 } from "./service3.webp";
+export { default as logo } from "./logo.png";
+export { default as luxury_suv_hero } from "./luxury_suv_hero.png";
+export { default as interior_cockpit } from "./interior_cockpit.png";
+export { default as interior_seats } from "./interior_seats.png";
+export { default as exterior_closeup } from "./exterior_closeup.png";
+export { default as las_vegas_cta_bg } from "./las_vegas_cta_bg.png";
+export { default as booking_bg } from "./booking_bg.png";
