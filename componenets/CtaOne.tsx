@@ -50,7 +50,7 @@ const CtaOne = () => {
                                 href="/book"
                                 className="group flex items-center space-x-2 text-[#B09C6D] text-lg md:text-xl tracking-[0.2em] uppercase font-light hover:text-white transition-colors duration-300"
                             >
-                                <span>Book Today</span>
+                                <span>Book Today With Us</span>
                                 <ChevronRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
                             </Link>
                         </motion.div>
