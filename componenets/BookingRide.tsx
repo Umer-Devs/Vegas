@@ -117,7 +117,7 @@ const BookingRide = () => {
                                 <SelectField label="Pickup time" icon={Clock} options={["09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "01:00 PM", "02:00 PM"]} />
                                 <div className="w-full">
                                     <button className="w-full py-4 bg-[#B09C6D] hover:bg-white text-black font-black rounded-xl transition-all duration-500 tracking-[0.2em] text-xs uppercase shadow-[0_10px_30px_rgba(176,156,109,0.2)] hover:shadow-[0_15px_40px_rgba(176,156,109,0.4)] transform hover:-translate-y-1">
-                                        SHOW RIDES
+                                        Get a Quote
                                     </button>
                                 </div>
                             </div>
@@ -126,7 +126,7 @@ const BookingRide = () => {
                         {activeTab === "Roundtrip" && (
                             <div className="flex justify-end pt-4">
                                 <button className="px-16 py-5 bg-[#B09C6D] hover:bg-white text-black font-black rounded-xl transition-all duration-500 tracking-[0.2em] text-xs uppercase shadow-[0_10px_30px_rgba(176,156,109,0.2)] hover:shadow-[0_15px_40px_rgba(176,156,109,0.4)] transform hover:-translate-y-1">
-                                    SHOW RIDES
+                                    Get a Quote
                                 </button>
                             </div>
                         )}
