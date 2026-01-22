@@ -4,11 +4,12 @@ import React, { useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Facebook, Mail, Phone, Lock, ArrowRight } from 'lucide-react';
+import { Facebook, Mail, Phone, Lock, ArrowRight, User } from 'lucide-react';
 
 export default function RegisterPage() {
     const { register } = useAuth();
     const [formData, setFormData] = useState({
+        username: '',
         phone: '',
         email: '',
         password: '',
@@ -21,7 +22,7 @@ export default function RegisterPage() {
             alert("Passwords do not match!");
             return;
         }
-        register("", formData.email, formData.phone, formData.password);
+        register(formData.username, formData.email, formData.phone, formData.password);
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -53,6 +54,20 @@ export default function RegisterPage() {
 
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="space-y-6">
+                            <div className="space-y-2">
+                                <label className="text-[10px] text-gray-500 font-bold tracking-widest uppercase ml-1">Username</label>
+                                <div className="relative">
+                                    <User size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#B09C6D]/60" />
+                                    <input
+                                        type="text"
+                                        name="username"
+                                        placeholder="Username"
+                                        onChange={handleChange}
+                                        required
+                                        className="w-full bg-white/5 border border-white/10 px-12 py-4 text-white text-xs focus:outline-none focus:border-[#B09C6D] transition-colors"
+                                    />
+                                </div>
+                            </div>
                             <div className="space-y-2">
                                 <label className="text-[10px] text-gray-500 font-bold tracking-widest uppercase ml-1">Phone Number</label>
                                 <div className="relative">
