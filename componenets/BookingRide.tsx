@@ -6,49 +6,107 @@ import { Search, Calendar, Clock, ChevronDown } from "lucide-react";
 
 type BookingType = "One-Way" | "Roundtrip" | "Hourly";
 
+import { useAuth } from "@/context/AuthContext";
+import { useRouter } from "next/navigation";
+
+import { submitBooking } from "@/lib/dummyApi";
+
+const InputField = ({ label, placeholder, icon: Icon, type = "text", value, onChange, error }: any) => (
+    <div className="flex flex-col space-y-2 w-full">
+        <label className="text-gray-400 text-xs font-light uppercase tracking-widest">{label}</label>
+        <div className="relative group">
+            <div className="absolute left-4 top-1/2 -translate-y-1/2">
+                <Icon className="w-4 h-4 text-gray-500 group-focus-within:text-[#B09C6D] transition-colors" />
+            </div>
+            <input
+                type={type}
+                placeholder={placeholder}
+                value={value || ""}
+                onChange={(e) => onChange(label, e.target.value)}
+                className={`w-full bg-white/5 border ${error && !value ? 'border-red-500' : 'border-white/10'} rounded-lg py-3 pl-12 pr-4 text-white text-sm focus:outline-none focus:border-[#B09C6D] focus:ring-1 focus:ring-[#B09C6D] transition-all placeholder:text-gray-600`}
+            />
+        </div>
+    </div>
+);
+
+const SelectField = ({ label, options, icon: Icon, value, onChange, error }: any) => (
+    <div className="flex flex-col space-y-2 w-full">
+        <label className="text-gray-400 text-xs font-light uppercase tracking-widest">{label}</label>
+        <div className="relative group">
+            <div className="absolute left-4 top-1/2 -translate-y-1/2">
+                <Icon className="w-4 h-4 text-gray-500 group-focus-within:text-[#B09C6D] transition-colors" />
+            </div>
+            <select
+                value={value || ""}
+                onChange={(e) => onChange(label, e.target.value)}
+                className={`w-full bg-white/5 border ${error && !value ? 'border-red-500' : 'border-white/10'} rounded-lg py-3 pl-12 pr-10 text-white text-sm focus:outline-none focus:border-[#B09C6D] focus:ring-1 focus:ring-[#B09C6D] transition-all appearance-none cursor-pointer`}
+            >
+                <option value="" className="bg-black text-gray-400">Select {label.split(' ')[1] || ""}</option>
+                {options.map((opt: string) => (
+                    <option key={opt} value={opt} className="bg-black text-white">{opt}</option>
+                ))}
+            </select>
+            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                <ChevronDown className="w-4 h-4 text-gray-500" />
+            </div>
+        </div>
+    </div>
+);
+
 const BookingRide = () => {
+    const { isLoggedIn } = useAuth();
+    const router = useRouter();
     const [activeTab, setActiveTab] = useState<BookingType>("One-Way");
+    const [formData, setFormData] = useState<Record<string, string>>({});
+    const [error, setError] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleInputChange = (field: string, value: string) => {
+        setFormData(prev => ({ ...prev, [field]: value }));
+        setError(false);
+    };
+
+    const handleBooking = async () => {
+        // Validation: Check which fields are required based on activeTab
+        const requiredFields = activeTab === "Roundtrip"
+            ? ["Pickup Location", "Drop-off Location", "Pickup Date", "Pickup Time", "Return Pickup Location", "Return Drop-off Location", "Return Date", "Return Time"]
+            : ["Pickup Location", "Drop-off Location", "Pickup Date", "Pickup Time"];
+
+        const allFieldsFilled = requiredFields.every(field => formData[field] && formData[field].trim() !== "");
+
+        if (!allFieldsFilled) {
+            setError(true);
+            return;
+        }
+
+        if (!isLoggedIn) {
+            router.push('/login');
+            return;
+        }
+
+        setIsSubmitting(true);
+        try {
+            const response = await submitBooking({
+                type: activeTab,
+                details: formData,
+                timestamp: new Date().toISOString()
+            });
+
+            if (response.success) {
+                alert(response.message);
+                setFormData({}); // Clear form on success
+            }
+        } catch (err) {
+            alert("Something went wrong. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
 
     const tabs: BookingType[] = ["One-Way", "Roundtrip", "Hourly"];
 
-    const InputField = ({ label, placeholder, icon: Icon, type = "text" }: any) => (
-        <div className="flex flex-col space-y-2 w-full">
-            <label className="text-gray-400 text-xs font-light uppercase tracking-widest">{label}</label>
-            <div className="relative group">
-                <div className="absolute left-4 top-1/2 -track-y-1/2 -translate-y-1/2">
-                    <Icon className="w-4 h-4 text-gray-500 group-focus-within:text-[#B09C6D] transition-colors" />
-                </div>
-                <input
-                    type={type}
-                    placeholder={placeholder}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg py-3 pl-12 pr-4 text-white text-sm focus:outline-none focus:border-[#B09C6D] focus:ring-1 focus:ring-[#B09C6D] transition-all placeholder:text-gray-600"
-                />
-            </div>
-        </div>
-    );
-
-    const SelectField = ({ label, options, icon: Icon }: any) => (
-        <div className="flex flex-col space-y-2 w-full">
-            <label className="text-gray-400 text-xs font-light uppercase tracking-widest">{label}</label>
-            <div className="relative group">
-                <div className="absolute left-4 top-1/2 -translate-y-1/2">
-                    <Icon className="w-4 h-4 text-gray-500 group-focus-within:text-[#B09C6D] transition-colors" />
-                </div>
-                <select className="w-full bg-white/5 border border-white/10 rounded-lg py-3 pl-12 pr-10 text-white text-sm focus:outline-none focus:border-[#B09C6D] focus:ring-1 focus:ring-[#B09C6D] transition-all appearance-none cursor-pointer">
-                    <option value="" className="bg-black text-gray-400">Select {label.split(' ')[1] || ""}</option>
-                    {options.map((opt: string) => (
-                        <option key={opt} value={opt} className="bg-black text-white">{opt}</option>
-                    ))}
-                </select>
-                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                    <ChevronDown className="w-4 h-4 text-gray-500" />
-                </div>
-            </div>
-        </div>
-    );
-
     return (
-        <div className="max-w-7xl mx-auto px-4 md:px-0">
+        <div className="max-w-7xl mx-auto px-4 md:px-0 py-6">
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -92,10 +150,10 @@ const BookingRide = () => {
                         {activeTab === "Roundtrip" ? (
                             <div className="flex flex-col space-y-10">
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                                    <InputField label="Pickup location" placeholder="Enter address or airport" icon={Search} />
-                                    <InputField label="Dropoff location" placeholder="Destination address" icon={Search} />
-                                    <InputField label="Pickup date" placeholder="MM/DD/YYYY" icon={Calendar} type="date" />
-                                    <SelectField label="Pickup time" icon={Clock} options={["09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "01:00 PM", "02:00 PM"]} />
+                                    <InputField label="Pickup Location" placeholder="Enter address or airport" icon={Search} value={formData["Pickup Location"]} onChange={handleInputChange} error={error} />
+                                    <InputField label="Drop-off Location" placeholder="Destination address" icon={Search} value={formData["Drop-off Location"]} onChange={handleInputChange} error={error} />
+                                    <InputField label="Pickup Date" placeholder="MM/DD/YYYY" icon={Calendar} type="date" value={formData["Pickup Date"]} onChange={handleInputChange} error={error} />
+                                    <SelectField label="Pickup Time" icon={Clock} options={["09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "01:00 PM", "02:00 PM"]} value={formData["Pickup Time"]} onChange={handleInputChange} error={error} />
                                 </div>
 
                                 <div className="h-px bg-white/10 w-full relative">
@@ -103,21 +161,25 @@ const BookingRide = () => {
                                 </div>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                                    <InputField label="Return Pickup" placeholder="Pickup for return" icon={Search} />
-                                    <InputField label="Return Dropoff" placeholder="Dropoff for return" icon={Search} />
-                                    <InputField label="Return date" placeholder="MM/DD/YYYY" icon={Calendar} type="date" />
-                                    <SelectField label="Return time" icon={Clock} options={["09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "01:00 PM", "02:00 PM"]} />
+                                    <InputField label="Return Pickup Location" placeholder="Pickup for return" icon={Search} value={formData["Return Pickup Location"]} onChange={handleInputChange} error={error} />
+                                    <InputField label="Return Drop-off Location" placeholder="Dropoff for return" icon={Search} value={formData["Return Drop-off Location"]} onChange={handleInputChange} error={error} />
+                                    <InputField label="Return Date" placeholder="MM/DD/YYYY" icon={Calendar} type="date" value={formData["Return Date"]} onChange={handleInputChange} error={error} />
+                                    <SelectField label="Return Time" icon={Clock} options={["09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "01:00 PM", "02:00 PM"]} value={formData["Return Time"]} onChange={handleInputChange} error={error} />
                                 </div>
                             </div>
                         ) : (
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 items-end">
-                                <InputField label="Pickup location" placeholder="Enter address or airport" icon={Search} />
-                                <InputField label="Dropoff location" placeholder="Destination address" icon={Search} />
-                                <InputField label="Pickup date" placeholder="MM/DD/YYYY" icon={Calendar} type="date" />
-                                <SelectField label="Pickup time" icon={Clock} options={["09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "01:00 PM", "02:00 PM"]} />
+                                <InputField label="Pickup Location" placeholder="Enter address or airport" icon={Search} value={formData["Pickup Location"]} onChange={handleInputChange} error={error} />
+                                <InputField label="Drop-off Location" placeholder="Destination address" icon={Search} value={formData["Drop-off Location"]} onChange={handleInputChange} error={error} />
+                                <InputField label="Pickup Date" placeholder="MM/DD/YYYY" icon={Calendar} type="date" value={formData["Pickup Date"]} onChange={handleInputChange} error={error} />
+                                <SelectField label="Pickup Time" icon={Clock} options={["09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "01:00 PM", "02:00 PM"]} value={formData["Pickup Time"]} onChange={handleInputChange} error={error} />
                                 <div className="w-full">
-                                    <button className="w-full py-4 bg-[#B09C6D] hover:bg-white text-black font-black rounded-xl transition-all duration-500 tracking-[0.2em] text-xs uppercase shadow-[0_10px_30px_rgba(176,156,109,0.2)] hover:shadow-[0_15px_40px_rgba(176,156,109,0.4)] transform hover:-translate-y-1">
-                                        Get a Quote
+                                    <button
+                                        onClick={handleBooking}
+                                        disabled={isSubmitting}
+                                        className={`w-full py-4 bg-[#B09C6D] hover:bg-white text-black font-black rounded-xl transition-all duration-500 tracking-[0.2em] text-xs uppercase shadow-[0_10px_30px_rgba(176,156,109,0.2)] hover:shadow-[0_15px_40px_rgba(176,156,109,0.4)] transform hover:-translate-y-1 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                    >
+                                        {isSubmitting ? "Processing..." : "Get a Quote"}
                                     </button>
                                 </div>
                             </div>
@@ -125,8 +187,12 @@ const BookingRide = () => {
 
                         {activeTab === "Roundtrip" && (
                             <div className="flex justify-end pt-4">
-                                <button className="px-16 py-5 bg-[#B09C6D] hover:bg-white text-black font-black rounded-xl transition-all duration-500 tracking-[0.2em] text-xs uppercase shadow-[0_10px_30px_rgba(176,156,109,0.2)] hover:shadow-[0_15px_40px_rgba(176,156,109,0.4)] transform hover:-translate-y-1">
-                                    Get a Quote
+                                <button
+                                    onClick={handleBooking}
+                                    disabled={isSubmitting}
+                                    className={`px-16 py-5 bg-[#B09C6D] hover:bg-white text-black font-black rounded-xl transition-all duration-500 tracking-[0.2em] text-xs uppercase shadow-[0_10px_30px_rgba(176,156,109,0.2)] hover:shadow-[0_15px_40px_rgba(176,156,109,0.4)] transform hover:-translate-y-1 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                >
+                                    {isSubmitting ? "Processing..." : "Get a Quote"}
                                 </button>
                             </div>
                         )}
