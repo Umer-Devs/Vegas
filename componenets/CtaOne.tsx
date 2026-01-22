@@ -10,7 +10,6 @@ const CtaOne = () => {
         <section className="bg-black py-20 px-6 md:px-12 overflow-hidden border-t border-white/5">
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    {/* Logo Side */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8, x: -50 }}
                         whileInView={{ opacity: 1, scale: 1, x: 0 }}
@@ -25,7 +24,6 @@ const CtaOne = () => {
                         />
                     </motion.div>
 
-                    {/* Text Side */}
                     <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
                         <motion.div
                             initial={{ opacity: 0, x: 50 }}

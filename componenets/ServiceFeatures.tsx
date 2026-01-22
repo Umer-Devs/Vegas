@@ -10,7 +10,6 @@ const ServiceFeatures = () => {
     return (
         <section className="bg-black text-white py-24 px-6 md:px-12 lg:px-24 overflow-hidden">
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                {/* Left Side: Content */}
                 <motion.div
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -45,9 +44,7 @@ const ServiceFeatures = () => {
                     </div>
                 </motion.div>
 
-                {/* Right Side: Image Gallery */}
                 <div className="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center">
-                    {/* Background Image (Dashboard) */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
                         whileInView={{ opacity: 0.6, scale: 1, rotate: 0 }}
@@ -63,7 +60,6 @@ const ServiceFeatures = () => {
                         />
                     </motion.div>
 
-                    {/* Foreground Image (Seats) */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8, x: 50, y: 50 }}
                         whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
@@ -78,7 +74,6 @@ const ServiceFeatures = () => {
                             className="object-cover"
                         />
 
-                        {/* Decorative Frame */}
                         <motion.div
                             initial={{ opacity: 0, scale: 0.5 }}
                             whileInView={{ opacity: 1, scale: 1 }}
@@ -88,7 +83,6 @@ const ServiceFeatures = () => {
                         />
                     </motion.div>
 
-                    {/* Accent Element */}
                     <motion.div
                         initial={{ width: 0 }}
                         whileInView={{ width: "100px" }}

@@ -11,7 +11,6 @@ const GetAQuote = () => {
             className="relative min-h-[500px] w-full flex items-center justify-center bg-fixed bg-center bg-no-repeat bg-cover"
             style={{ backgroundImage: `url(${las_vegas_cta_bg.src})` }}
         >
-            {/* Dark Overlay */}
             <div className="absolute inset-0 bg-black/60 z-0" />
 
             <div className="relative z-10 max-w-5xl mx-auto px-6 text-center space-y-10">

@@ -27,7 +27,6 @@ const Navbar = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    // Hide navbar on dashboard
     if (pathname === '/dashboard') return null;
 
     const navLinks = [
@@ -45,14 +44,12 @@ const Navbar = () => {
         >
             <div className="absolute inset-0 bg-black/45 -z-10 "></div>
             <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center text-white">
-                {/* Logo Placeholder - The image shown had a circular gold logo */}
                 <div className="flex-shrink-0">
                     <Link href="/" className="flex items-center space-x-2">
                         <img src="/logo.png" alt="LV ELITE CONCIERGE" className=" h-20 w-30 sm:h-24 sm:w-40" />
                     </Link>
                 </div>
 
-                {/* Desktop Links */}
                 <div className="hidden md:flex items-center space-x-12">
                     {navLinks.map((link) => {
                         const isActive = pathname === link.href;
@@ -99,7 +96,6 @@ const Navbar = () => {
                     )}
                 </div>
 
-                {/* Mobile Menu Icon */}
                 <div className="md:hidden flex items-center gap-4">
                     {isAdmin && (
                         <Link href="/dashboard" className="text-[#B09C6D]">
@@ -115,7 +111,6 @@ const Navbar = () => {
                 </div>
             </div>
 
-            {/* Mobile Sidebar */}
             <AnimatePresence>
                 {isOpen && (
                     <>

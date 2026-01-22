@@ -10,7 +10,6 @@ const ImgAttachment = () => {
             className="relative w-full py-10 bg-fixed bg-cover bg-center overflow-hidden"
             style={{ backgroundImage: 'url("https://vegasviprides.com/wp-content/uploads/2024/10/10.webp")' }}
         >
-            {/* Dark overlay for readability */}
             <div className="absolute inset-0 bg-black/70"></div>
 
             <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">

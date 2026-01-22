@@ -18,7 +18,6 @@ const Footer = () => {
         <footer className="bg-black py-16 border-t border-white/5">
             <div className="max-w-7xl mx-auto px-6 md:px-12">
                 <div className="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 text-center md:text-left">
-                    {/* Left Side: Branding & Copyright */}
                     <div className="flex flex-col space-y-4">
                         <img src="./logo.png" className="h-20 w-40" alt="" />
                         <div className="text-gray-500 text-sm font-light leading-relaxed max-w-xs">
@@ -27,7 +26,6 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    {/* Center: Navigation Links */}
                     <nav className="flex items-center space-x-8 text-sm font-medium tracking-wide uppercase">
                         {footerLinks.map((link) => {
                             const isActive = pathname === link.href;
@@ -44,7 +42,6 @@ const Footer = () => {
                         })}
                     </nav>
 
-                    {/* Right Side: Social Media Icons */}
                     <div className="flex items-center space-x-6">
                         <Link href="#" className="text-gray-400 hover:text-white transition-all transform hover:scale-110">
                             <Facebook className="w-6 h-6" />

@@ -31,7 +31,6 @@ const OurServices = () => {
     return (
         <section className="bg-black text-white py-24 px-6 md:px-12 lg:px-24">
             <div className="max-w-7xl mx-auto">
-                {/* Header Section */}
                 <div className="text-center mb-16 space-y-4">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
@@ -54,7 +53,6 @@ const OurServices = () => {
                     </motion.p>
                 </div>
 
-                {/* Services Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
                     {services.map((service, index) => (
                         <motion.div

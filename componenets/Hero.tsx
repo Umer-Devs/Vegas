@@ -7,12 +7,10 @@ import Link from "next/link";
 const Hero = () => {
     return (
         <section className="relative w-full min-h-screen lg:h-[90vh] flex items-center overflow-hidden bg-black pt-[15%] sm:pt-[6%]">
-            {/* Background Image with Overlay */}
             <div
                 className="absolute inset-0 bg-cover bg-bottom bg-no-repeat transition-all duration-1000"
                 style={{ backgroundImage: 'url("https://vegasviprides.com/wp-content/uploads/2024/10/23-Chevrolet-Suburban-Cargo-Space.webp")' }}
             >
-                {/* Responsive overlay: More aggressive on mobile to keep text readable */}
                 <div className="absolute inset-0 bg-black/0 lg:bg-gradient-to-r lg:from-black/95 lg:via-black/40 lg:to-transparent"></div>
             </div>
 
@@ -72,7 +70,6 @@ const Hero = () => {
             </div>
 
 
-            {/* Subtle bottom gradient to blend with next section */}
             <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
         </section>
     );

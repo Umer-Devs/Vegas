@@ -42,7 +42,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }, []);
 
     const login = (email: string, pass: string) => {
-        // Admin Login
         if (email === ADMIN_EMAIL && pass === ADMIN_PASS) {
             setIsAdmin(true);
             localStorage.setItem('is_admin', 'true');
@@ -55,7 +54,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             return true;
         }
 
-        // Mock User Login
         const storedUsers = JSON.parse(localStorage.getItem('registered_users') || '[]');
         const foundUser = storedUsers.find((u: any) => u.email === email && u.password === pass);
 
@@ -77,7 +75,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         storedUsers.push(newUser);
         localStorage.setItem('registered_users', JSON.stringify(storedUsers));
 
-        // Auto-login after registration
         const userData = { name, email, phone };
         setUser(userData);
         localStorage.setItem('user_data', JSON.stringify(userData));

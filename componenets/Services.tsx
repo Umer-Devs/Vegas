@@ -36,7 +36,6 @@ const Services = () => {
   return (
     <section className="bg-black py-24 px-6 md:px-12 relative">
       <div className="max-w-7xl mx-auto">
-        {/* Header Section */}
         <div className="text-center max-w-4xl mx-auto mb-20">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
@@ -54,11 +53,10 @@ const Services = () => {
             transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
             className="text-gray-300 text-lg md:text-xl leading-relaxed font-light tracking-wide"
           >
-           LV Elite Concierge sets the standard in luxury transportation, offering refined elegance, superior comfort, and true exclusivity. With professional chauffeurs, premium vehicles, and personalized service, we create seamless journeys designed to be truly unforgettable
+            LV Elite Concierge sets the standard in luxury transportation, offering refined elegance, superior comfort, and true exclusivity. With professional chauffeurs, premium vehicles, and personalized service, we create seamless journeys designed to be truly unforgettable
           </motion.p>
         </div>
 
-        {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {serviceData.map((service, index) => (
             <motion.div
@@ -69,7 +67,6 @@ const Services = () => {
               transition={{ duration: 0.8, delay: 0.2 * index, ease: "easeOut" }}
               className="flex flex-col items-center text-center space-y-6 group"
             >
-              {/* Icon Container with hover effect */}
               <div className="relative mb-4">
                 <div className="absolute inset-0 bg-[#B09C6D]/20 blur-2xl rounded-full scale-0 group-hover:scale-125 transition-transform duration-500"></div>
                 <div className="relative z-10 p-4 transition-transform duration-500 group-hover:scale-110">

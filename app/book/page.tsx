@@ -14,7 +14,6 @@ const page = () => {
         <>
             <Navbar />
             <main className="bg-black min-h-screen">
-                {/* Hero Section for Booking */}
                 <section
                     className="relative h-[50vh] md:h-[65vh] flex items-center justify-center bg-center bg-cover bg-no-repeat overflow-hidden"
                     style={{ backgroundImage: `url(${heroImage})` }}
@@ -36,7 +35,6 @@ const page = () => {
                     </div>
                 </section>
 
-                {/* Booking Component Section */}
                 <div className="py-12 md:py-20 px-4 md:px-0">
                     <BookingRide />
                 </div>

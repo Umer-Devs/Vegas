@@ -67,7 +67,6 @@ const BookingRide = () => {
     };
 
     const handleBooking = async () => {
-        // Validation: Check which fields are required based on activeTab
         const requiredFields = activeTab === "Roundtrip"
             ? ["Pickup Location", "Drop-off Location", "Pickup Date", "Pickup Time", "Return Pickup Location", "Return Drop-off Location", "Return Date", "Return Time"]
             : ["Pickup Location", "Drop-off Location", "Pickup Date", "Pickup Time"];
@@ -94,7 +93,7 @@ const BookingRide = () => {
 
             if (response.success) {
                 alert(response.message);
-                setFormData({}); // Clear form on success
+                setFormData({});
             }
         } catch (err) {
             alert("Something went wrong. Please try again.");
@@ -113,10 +112,8 @@ const BookingRide = () => {
                 transition={{ duration: 0.8 }}
                 className="bg-[#0A0A0A] border border-white/10 rounded-3xl p-6 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-sm relative overflow-hidden"
             >
-                {/* Decorative Accent */}
                 <div className="absolute top-0 left-0 w-2 h-full bg-[#B09C6D]" />
 
-                {/* Tabs */}
                 <div className="flex flex-col sm:flex-row bg-[#151515] p-1.5 rounded-2xl w-full sm:w-fit mb-12 border border-white/5">
                     {tabs.map((tab) => (
                         <button
@@ -137,7 +134,6 @@ const BookingRide = () => {
                     ))}
                 </div>
 
-                {/* Form Content */}
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={activeTab}

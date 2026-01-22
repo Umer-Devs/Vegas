@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 const AboutSection = () => {
   return (
     <section className="bg-black py-24 px-6 md:px-12 relative overflow-hidden">
-      {/* Subtle background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#B09C6D]/5 blur-[120px] rounded-full pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto text-center relative z-10">
@@ -28,7 +27,7 @@ const AboutSection = () => {
           transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
         >
           <p className="text-gray-200 text-lg md:text-2xl  tracking-wider leading-clamp font-light max-w-6xl mx-auto">
-           LV Elite Concierge delivers elevated transportation experiences defined by elegance, comfort, and exclusivity. Every journey is thoughtfully designed to meet the highest standards of refinement, ensuring a seamless blend of style, professionalism, and discretion
+            LV Elite Concierge delivers elevated transportation experiences defined by elegance, comfort, and exclusivity. Every journey is thoughtfully designed to meet the highest standards of refinement, ensuring a seamless blend of style, professionalism, and discretion
           </p>
         </motion.div>
         <button className=" mt-[4%] group relative px-8 md:px-10 py-3 md:py-5 border-2 border-white text-white font-bold tracking-[0.1em] md:tracking-[0.2em] text-xs md:text-base overflow-hidden transition-all duration-300 hover:text-black hover:border-[#B09C6D]">
