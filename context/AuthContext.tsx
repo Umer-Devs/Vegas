@@ -2,8 +2,10 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import api from '@/lib/api';
 
 interface User {
+    id?: number;
     name: string;
     email: string;
     phone: string;
@@ -13,9 +15,10 @@ interface AuthContextType {
     user: User | null;
     isAdmin: boolean;
     isLoggedIn: boolean;
-    login: (email: string, pass: string) => boolean;
-    register: (name: string, email: string, phone: string, pass: string) => void;
-    logout: () => void;
+    login: (email: string, pass: string) => Promise<boolean>;
+    loginWithToken: (token: string) => Promise<boolean>;
+    register: (username: string, email: string, phone: string, pass: string, confirmPass: string) => Promise<void>;
+    logout: () => Promise<void>;
     loading: boolean;
 }
 
@@ -41,59 +44,116 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         setLoading(false);
     }, []);
 
-    const login = (email: string, pass: string) => {
-        if (email === ADMIN_EMAIL && pass === ADMIN_PASS) {
-            setIsAdmin(true);
-            localStorage.setItem('is_admin', 'true');
-            document.cookie = `is_admin=true; path=/; max-age=86400; SameSite=Lax`;
+    const loginWithToken = async (token: string) => {
+        try {
+            localStorage.setItem('auth_token', token);
+            const response = await api.get('/user');
+            if (response.data.status) {
+                const userData = response.data.user;
+                setUser(userData);
+                setIsAdmin(userData.email === ADMIN_EMAIL);
 
-            const currentCount = parseInt(localStorage.getItem("admin_login_count") || "0");
-            localStorage.setItem("admin_login_count", (currentCount + 1).toString());
+                localStorage.setItem('user_data', JSON.stringify(userData));
 
-            router.push('/dashboard');
-            return true;
+                if (userData.email === ADMIN_EMAIL) {
+                    localStorage.setItem('is_admin', 'true');
+                    document.cookie = `is_admin=true; path=/; max-age=86400; SameSite=Lax`;
+                }
+                return true;
+            }
+        } catch (error) {
+            console.error("Login with token failed:", error);
+            localStorage.removeItem('auth_token');
         }
-
-        const storedUsers = JSON.parse(localStorage.getItem('registered_users') || '[]');
-        const foundUser = storedUsers.find((u: any) => u.email === email && u.password === pass);
-
-        if (foundUser) {
-            const userData = { name: foundUser.name, email: foundUser.email, phone: foundUser.phone };
-            setUser(userData);
-            localStorage.setItem('user_data', JSON.stringify(userData));
-            router.push('/');
-            return true;
-        }
-
         return false;
     };
 
-    const register = (name: string, email: string, phone: string, pass: string) => {
-        const storedUsers = JSON.parse(localStorage.getItem('registered_users') || '[]');
-        const newUser = { name, email, phone, password: pass };
+    const login = async (email: string, pass: string) => {
+        try {
+            const response = await api.post('/login', { email, password: pass });
+            if (response.data.status) {
+                const userData = response.data.user;
+                const token = response.data.token;
 
-        storedUsers.push(newUser);
-        localStorage.setItem('registered_users', JSON.stringify(storedUsers));
+                setUser(userData);
+                setIsAdmin(userData.email === ADMIN_EMAIL);
 
-        const userData = { name, email, phone };
-        setUser(userData);
-        localStorage.setItem('user_data', JSON.stringify(userData));
-        router.push('/');
+                localStorage.setItem('user_data', JSON.stringify(userData));
+                localStorage.setItem('auth_token', token);
+
+                if (userData.email === ADMIN_EMAIL) {
+                    localStorage.setItem('is_admin', 'true');
+                    document.cookie = `is_admin=true; path=/; max-age=86400; SameSite=Lax`;
+                    router.push('/dashboard');
+                } else {
+                    router.push('/');
+                }
+                return true;
+            } else {
+                const errorMsg = response.data.errors
+                    ? Object.values(response.data.errors).flat().join('\n')
+                    : response.data.message || "Login failed";
+                alert(errorMsg);
+            }
+        } catch (error: any) {
+            console.error("Login failed:", error);
+            const errorMsg = error.response?.data?.message || "Network error. Please try again.";
+            alert(errorMsg);
+        }
+        return false;
     };
 
-    const logout = () => {
-        setIsAdmin(false);
-        setUser(null);
-        localStorage.removeItem('is_admin');
-        localStorage.removeItem('user_data');
-        document.cookie = "is_admin=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC; SameSite=Lax";
-        router.push('/login');
+    const register = async (username: string, email: string, phone: string, pass: string, confirmPass: string) => {
+        try {
+            const response = await api.post('/register', {
+                username,
+                email,
+                phone,
+                password: pass,
+                confirmPassword: confirmPass
+            });
+
+            if (response.data.status) {
+                const userData = response.data.user;
+                const token = response.data.token;
+
+                setUser(userData);
+                localStorage.setItem('user_data', JSON.stringify(userData));
+                localStorage.setItem('auth_token', token);
+
+                router.push('/');
+            } else {
+                const errorMsg = response.data.errors
+                    ? Object.values(response.data.errors).flat().join('\n')
+                    : response.data.message || "Registration failed";
+                alert(errorMsg);
+            }
+        } catch (error) {
+            console.error("Registration failed:", error);
+            alert("Network error. Please check your connection.");
+        }
+    };
+
+    const logout = async () => {
+        try {
+            await api.post('/logout', {});
+        } catch (error) {
+            console.error("Logout API call failed:", error);
+        } finally {
+            setIsAdmin(false);
+            setUser(null);
+            localStorage.removeItem('is_admin');
+            localStorage.removeItem('user_data');
+            localStorage.removeItem('auth_token');
+            document.cookie = "is_admin=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC; SameSite=Lax";
+            router.push('/login');
+        }
     };
 
     const isLoggedIn = !!user || isAdmin;
 
     return (
-        <AuthContext.Provider value={{ user, isAdmin, isLoggedIn, login, register, logout, loading }}>
+        <AuthContext.Provider value={{ user, isAdmin, isLoggedIn, login, loginWithToken, register, logout, loading }}>
             {children}
         </AuthContext.Provider>
     );

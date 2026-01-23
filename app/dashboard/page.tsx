@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
+import { useParams, useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import {
     Users,
@@ -17,6 +18,7 @@ import {
 import { motion } from 'framer-motion';
 
 import Link from 'next/link';
+import api from '@/lib/api';
 
 const GoogleIcon = ({ className }: { className?: string }) => (
     <svg className={className} viewBox="0 0 24 24">
@@ -68,22 +70,51 @@ const StatBlock = ({ icon: Icon, label, value, href, color = "#B09C6D", isGoogle
 );
 
 export default function DashboardPage() {
-    const { logout } = useAuth();
+    const { user, isAdmin, logout, loading: authLoading } = useAuth();
+    const router = useRouter();
     const [loginCount, setLoginCount] = useState(0);
+    const [usersData, setUsersData] = useState<any[]>([]);
+    const [bookingsData, setBookingsData] = useState<any[]>([]);
+    const [contactsData, setContactsData] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        if (!authLoading && !isAdmin) {
+            router.push('/');
+        }
+    }, [isAdmin, authLoading, router]);
 
     useEffect(() => {
         const count = localStorage.getItem("admin_login_count") || "0";
         setLoginCount(parseInt(count));
+
+        const fetchData = async () => {
+            try {
+                const [usersRes, bookingsRes, contactsRes] = await Promise.all([
+                    api.get('/users'),
+                    api.get('/bookings'),
+                    api.get('/contacts')
+                ]);
+
+                if (usersRes.data.status) setUsersData(usersRes.data.data);
+                if (bookingsRes.data.status) setBookingsData(bookingsRes.data.data);
+                if (contactsRes.data.status) setContactsData(contactsRes.data.data);
+            } catch (err) {
+                console.error("Error fetching dashboard data:", err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchData();
     }, []);
 
-    const usersData = [
-        { name: 'Umer Jamil', email: 'umerjamil1211@gmail.com', phone: '+92 312 3456789', method: 'Email', status: 'Online' },
-        { name: 'Hamza Khan', email: 'hamza.k@luxury.com', phone: '+92 300 1234567', method: 'Facebook', status: 'Offline' },
-        { name: 'Sara Ahmed', email: 'sara.a@vegas.com', phone: '+92 321 9876543', method: 'Google', status: 'Away' },
-        { name: 'Zainab Rashid', email: 'zainab.r@elite.com', phone: '+92 345 6789012', method: 'Facebook', status: 'Offline' },
-        { name: 'Ali Raza', email: 'ali.raza@elite.com', phone: '+92 333 4445556', method: 'Email', status: 'Offline' },
-        { name: 'Fatima Zahra', email: 'fatima@gmail.com', phone: '+92 301 5556667', method: 'Google', status: 'Online' },
-    ];
+    const googleCount = usersData.filter(u => u.provider?.toLowerCase() === 'google').length;
+    const facebookCount = usersData.filter(u => u.provider?.toLowerCase() === 'facebook').length;
+
+    if (loading) {
+        return <div className="min-h-screen bg-black flex items-center justify-center text-[#B09C6D]">Loading Elite Console...</div>;
+    }
 
     return (
         <div className="min-h-screen bg-black text-white relative flex flex-col pt-10 pb-20 overflow-x-hidden">
@@ -124,16 +155,17 @@ export default function DashboardPage() {
             </header>
 
             <main className="max-w-7xl mx-auto w-full px-6 space-y-12">
-                {/* Stats Grid - Fixed links for navigation */}
+                {/* Stats Grid */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6"
                 >
-                    <StatBlock icon={Users} label="Total Registered" value="1,248" href="/dashboard/registrations" />
-                    <StatBlock icon={ClipboardList} label="Booking Form Fills" value="842" href="/dashboard/bookings" />
-                    <StatBlock icon={Facebook} label="Facebook Logins" value="512" color="#1877F2" href="/dashboard/facebook" />
-                    <StatBlock icon={Chrome} label="Google Logins" value="324" color="#4285F4" href="/dashboard/google" isGoogle />
+                    <StatBlock icon={Users} label="Total Registered" value={usersData.length} href="/dashboard/registrations" />
+                    <StatBlock icon={ClipboardList} label="Booking Form Fills" value={bookingsData.length} href="/dashboard/bookings" />
+                    <StatBlock icon={Facebook} label="Facebook Logins" value={facebookCount} color="#1877F2" href="/dashboard/facebook" />
+                    <StatBlock icon={Chrome} label="Google Logins" value={googleCount} color="#4285F4" href="/dashboard/google" isGoogle />
+                    <StatBlock icon={Mail} label="Contact Queries" value={contactsData.length} color="#B09C6D" href="/dashboard/contacts" />
                 </motion.div>
 
                 {/* Main Content Area */}
@@ -165,25 +197,6 @@ export default function DashboardPage() {
                                 </div>
                             </div>
                         </div>
-
-                        {/* Quick Insights */}
-                        <div className="bg-white/[0.02] border border-white/5 p-8 space-y-6">
-                            <h3 className="text-white tracking-[0.2em] font-bold uppercase text-[9px] flex items-center gap-2">
-                                <Activity size={12} className="text-[#B09C6D]" />
-                                Registration Insight
-                            </h3>
-                            <div className="space-y-4">
-                                <div className="flex justify-between items-center group">
-                                    <span className="text-[9px] text-gray-500 tracking-widest uppercase">Conversion Rate</span>
-                                    <span className="text-[10px] text-white font-bold uppercase tracking-widest">67%</span>
-                                </div>
-                                <div className="w-full bg-white/5 h-[1px]"></div>
-                                <div className="flex justify-between items-center">
-                                    <span className="text-[9px] text-gray-500 tracking-widest uppercase">Retention</span>
-                                    <span className="text-[10px] text-[#B09C6D] font-bold uppercase tracking-widest">84%</span>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     {/* Right Side: Detailed Table */}
@@ -206,12 +219,12 @@ export default function DashboardPage() {
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-white/5">
-                                        {usersData.map((user, i) => (
+                                        {usersData.length > 0 ? usersData.map((user, i) => (
                                             <tr key={i} className="hover:bg-white/[0.02] transition-colors group">
                                                 <td className="px-10 py-8">
                                                     <div className="flex items-center gap-4">
                                                         <div className="w-10 h-10 bg-[#B09C6D]/10 border border-[#B09C6D]/20 flex items-center justify-center text-[11px] font-bold text-[#B09C6D]">
-                                                            {user.name.charAt(0)}
+                                                            {user.name?.charAt(0) || 'U'}
                                                         </div>
                                                         <div>
                                                             <p className="text-white text-[11px] font-bold tracking-widest uppercase group-hover:text-[#B09C6D] transition-colors">{user.name}</p>
@@ -221,14 +234,14 @@ export default function DashboardPage() {
                                                 </td>
                                                 <td className="px-10 py-8 text-center sm:text-left">
                                                     <div className="flex items-center gap-3">
-                                                        {user.method === 'Facebook' ? (
+                                                        {user.provider?.toLowerCase() === 'facebook' ? (
                                                             <Facebook size={14} className="text-[#1877F2]" />
-                                                        ) : user.method === 'Google' ? (
+                                                        ) : user.provider?.toLowerCase() === 'google' ? (
                                                             <GoogleIcon className="w-4 h-4" />
                                                         ) : (
                                                             <Mail size={14} className="text-[#B09C6D]" />
                                                         )}
-                                                        <span className="text-[10px] font-bold tracking-widest uppercase text-white">{user.method}</span>
+                                                        <span className="text-[10px] font-bold tracking-widest uppercase text-white">{user.provider || 'normal'}</span>
                                                     </div>
                                                 </td>
                                                 <td className="px-10 py-8">
@@ -244,7 +257,11 @@ export default function DashboardPage() {
                                                     </div>
                                                 </td>
                                             </tr>
-                                        ))}
+                                        )) : (
+                                            <tr>
+                                                <td colSpan={3} className="px-10 py-8 text-center text-gray-500 text-[10px] tracking-widest uppercase">No users found</td>
+                                            </tr>
+                                        )}
                                     </tbody>
                                 </table>
                             </div>

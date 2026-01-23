@@ -9,7 +9,8 @@ type BookingType = "One-Way" | "Roundtrip" | "Hourly";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 
-import { submitBooking } from "@/lib/dummyApi";
+import api from "@/lib/api";
+import { section } from "framer-motion/client";
 
 const InputField = ({ label, placeholder, icon: Icon, type = "text", value, onChange, error }: any) => (
     <div className="flex flex-col space-y-2 w-full">
@@ -85,18 +86,33 @@ const BookingRide = () => {
 
         setIsSubmitting(true);
         try {
-            const response = await submitBooking({
-                type: activeTab,
-                details: formData,
-                timestamp: new Date().toISOString()
-            });
+            // Map frontend fields to backend fields
+            const payload = {
+                type: activeTab.toLowerCase(),
+                pickup_location: formData["Pickup Location"],
+                dropoff_location: formData["Drop-off Location"],
+                pickup_date: formData["Pickup Date"],
+                pickup_time: formData["Pickup Time"],
+                return_pickup_location: formData["Return Pickup Location"] || null,
+                return_dropoff_location: formData["Return Drop-off Location"] || null,
+                return_date: formData["Return Date"] || null,
+                return_time: formData["Return Time"] || null,
+            };
 
-            if (response.success) {
-                alert(response.message);
+            const response = await api.post('/booking', payload);
+
+            if (response.data.status) {
+                alert(response.data.message);
                 setFormData({});
+            } else {
+                const errorMsg = response.data.errors
+                    ? Object.values(response.data.errors).flat().join('\n')
+                    : response.data.message || "Booking failed";
+                alert(errorMsg);
             }
-        } catch (err) {
-            alert("Something went wrong. Please try again.");
+        } catch (err: any) {
+            console.error("Booking submission error:", err);
+            alert("Network error. Please try again.");
         } finally {
             setIsSubmitting(false);
         }
@@ -105,7 +121,8 @@ const BookingRide = () => {
     const tabs: BookingType[] = ["One-Way", "Roundtrip", "Hourly"];
 
     return (
-        <div className="max-w-7xl mx-auto px-4 md:px-0 py-6">
+     <section className='bg-[#080705]'>
+           <div className="max-w-7xl mx-auto px-4 md:px-0 py-6 ">
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -196,6 +213,7 @@ const BookingRide = () => {
                 </AnimatePresence>
             </motion.div>
         </div>
+     </section>
     );
 };
 

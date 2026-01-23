@@ -16,13 +16,19 @@ export default function RegisterPage() {
         confirmPassword: ''
     });
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
+
+    const handleSocialLogin = (provider: string) => {
+        window.location.href = `${apiUrl}/auth/${provider}/redirect`;
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (formData.password !== formData.confirmPassword) {
             alert("Passwords do not match!");
             return;
         }
-        register(formData.username, formData.email, formData.phone, formData.password);
+        await register(formData.username, formData.email, formData.phone, formData.password, formData.confirmPassword);
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,7 +36,7 @@ export default function RegisterPage() {
     };
 
     return (
-        <div className=" w-full flex items-center justify-center bg-black relative overflow-hidden pt-60">
+        <div className=" w-full flex items-center justify-center bg-black relative overflow-hidden pt-60 pb-20">
             <div className="absolute inset-0">
                 <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#B09C6D]/10 rounded-full blur-[150px]"></div>
                 <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#B09C6D]/5 rounded-full blur-[150px]"></div>
@@ -68,6 +74,7 @@ export default function RegisterPage() {
                                     />
                                 </div>
                             </div>
+
                             <div className="space-y-2">
                                 <label className="text-[10px] text-gray-500 font-bold tracking-widest uppercase ml-1">Phone Number</label>
                                 <div className="relative">
@@ -138,12 +145,18 @@ export default function RegisterPage() {
                     </form>
 
                     <div className="mt-10 pt-10 border-t border-white/5 space-y-6">
-                        <button className="w-full bg-[#1877F2]/10 border border-[#1877F2]/20 hover:bg-[#1877F2]/20 text-white font-bold py-4 px-6 text-[10px] tracking-[0.2em] uppercase transition-all flex items-center justify-center gap-4">
+                        <button
+                            onClick={() => handleSocialLogin('facebook')}
+                            className="w-full bg-[#1877F2]/10 border border-[#1877F2]/20 hover:bg-[#1877F2]/20 text-white font-bold py-4 px-6 text-[10px] tracking-[0.2em] uppercase transition-all flex items-center justify-center gap-4"
+                        >
                             <Facebook size={18} fill="currentColor" />
                             Sign Up with Facebook
                         </button>
 
-                        <button className="w-full bg-white/[0.03] border border-white/10 hover:bg-white/10 text-white font-bold py-4 px-6 text-[10px] tracking-[0.2em] uppercase transition-all flex items-center justify-center gap-4">
+                        <button
+                            onClick={() => handleSocialLogin('google')}
+                            className="w-full bg-white/[0.03] border border-white/10 hover:bg-white/10 text-white font-bold py-4 px-6 text-[10px] tracking-[0.2em] uppercase transition-all flex items-center justify-center gap-4"
+                        >
                             <svg className="w-4 h-4" viewBox="0 0 24 24">
                                 <path
                                     fill="#4285F4"

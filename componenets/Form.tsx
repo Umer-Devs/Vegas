@@ -5,7 +5,50 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
+import api from '@/lib/api'
+
 const Form = () => {
+    const [formData, setFormData] = React.useState({
+        first_name: '',
+        last_name: '',
+        phone: '',
+        email: ''
+    })
+    const [isSubmitting, setIsSubmitting] = React.useState(false)
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { placeholder, value } = e.target
+        const fieldMap: Record<string, string> = {
+            "First Name": "first_name",
+            "Last Name": "last_name",
+            "Phone*": "phone",
+            "Email*": "email"
+        }
+        const fieldName = fieldMap[placeholder]
+        if (fieldName) {
+            setFormData(prev => ({ ...prev, [fieldName]: value }))
+        }
+    }
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault()
+        setIsSubmitting(true)
+        try {
+            const response = await api.post('/contact', formData)
+            if (response.data.status) {
+                alert("Request submitted successfully!")
+                setFormData({ first_name: '', last_name: '', phone: '', email: '' })
+            } else {
+                alert(response.data.message || "Submission failed")
+            }
+        } catch (error) {
+            console.error("Submission error:", error)
+            alert("Network error. Please try again.")
+        } finally {
+            setIsSubmitting(false)
+        }
+    }
+
     return (
         <section className="relative bg-black text-white min-h-screen py-12 px-4 md:px-0 overflow-hidden">
             <div
@@ -66,13 +109,13 @@ const Form = () => {
                 </div>
 
                 <div className="bg-black p-8 md:p-12">
-                    <form className="space-y-6">
+                    <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="grid grid-cols-1 gap-6">
                             {[
-                                { placeholder: "First Name", type: "text" },
-                                { placeholder: "Last Name", type: "text" },
-                                { placeholder: "Phone*", type: "tel", required: true },
-                                { placeholder: "Email*", type: "email", required: true },
+                                { placeholder: "First Name", type: "text", value: formData.first_name },
+                                { placeholder: "Last Name", type: "text", value: formData.last_name },
+                                { placeholder: "Phone*", type: "tel", required: true, value: formData.phone },
+                                { placeholder: "Email*", type: "email", required: true, value: formData.email },
                             ].map((field, idx) => (
                                 <motion.div
                                     key={field.placeholder}
@@ -84,6 +127,8 @@ const Form = () => {
                                         type={field.type}
                                         placeholder={field.placeholder}
                                         required={field.required}
+                                        value={field.value}
+                                        onChange={handleInputChange}
                                         className="w-full bg-white text-black p-4 rounded-md focus:outline-none focus:ring-2 focus:ring-[#B09C6D] placeholder:text-gray-400 transition-all duration-300"
                                     />
                                 </motion.div>
@@ -115,9 +160,10 @@ const Form = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 1.4 }}
                             type="submit"
-                            className="w-full bg-[#D1B06B] hover:bg-[#B09C6D] text-white font-bold py-4 rounded-md transition-colors duration-300 shadow-lg text-lg tracking-wide transform hover:scale-[1.01]"
+                            disabled={isSubmitting}
+                            className={`w-full bg-[#D1B06B] hover:bg-[#B09C6D] text-white font-bold py-4 rounded-md transition-colors duration-300 shadow-lg text-lg tracking-wide transform hover:scale-[1.01] ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
                         >
-                            Submit Request
+                            {isSubmitting ? "Processing..." : "Submit Request"}
                         </motion.button>
                     </form>
                 </div>

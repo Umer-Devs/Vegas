@@ -11,12 +11,17 @@ export default function LoginPage() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const { login } = useAuth();
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSocialLogin = (provider: string) => {
+        window.location.href = `${apiUrl}/auth/${provider}/redirect`;
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError('');
 
-        const success = login(email, password);
+        const success = await login(email, password);
         if (!success) {
             setError('Invalid credentials. Please try again or create an account.');
         }
@@ -99,12 +104,18 @@ export default function LoginPage() {
                     </form>
 
                     <div className="mt-10 pt-10 border-t border-white/5 space-y-6">
-                        <button className="w-full bg-[#1877F2]/10 border border-[#1877F2]/20 hover:bg-[#1877F2]/20 text-white font-bold py-4 px-6 text-[10px] tracking-[0.2em] uppercase transition-all flex items-center justify-center gap-4">
+                        <button
+                            onClick={() => handleSocialLogin('facebook')}
+                            className="w-full bg-[#1877F2]/10 border border-[#1877F2]/20 hover:bg-[#1877F2]/20 text-white font-bold py-4 px-6 text-[10px] tracking-[0.2em] uppercase transition-all flex items-center justify-center gap-4"
+                        >
                             <Facebook size={18} fill="currentColor" />
                             Continue with Facebook
                         </button>
 
-                        <button className="w-full bg-white/[0.03] border border-white/10 hover:bg-white/10 text-white font-bold py-4 px-6 text-[10px] tracking-[0.2em] uppercase transition-all flex items-center justify-center gap-4">
+                        <button
+                            onClick={() => handleSocialLogin('google')}
+                            className="w-full bg-white/[0.03] border border-white/10 hover:bg-white/10 text-white font-bold py-4 px-6 text-[10px] tracking-[0.2em] uppercase transition-all flex items-center justify-center gap-4"
+                        >
                             <svg className="w-4 h-4" viewBox="0 0 24 24">
                                 <path
                                     fill="#4285F4"

@@ -19,7 +19,7 @@ const Footer = () => {
             <div className="max-w-7xl mx-auto px-6 md:px-12">
                 <div className="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 text-center md:text-left">
                     <div className="flex flex-col space-y-4">
-                        <img src="./logo.png" className="h-20 w-40" alt="" />
+                        <img src="/logo.png" className="h-20 w-40" alt="" />
                         <div className="text-gray-500 text-sm font-light leading-relaxed max-w-xs">
                             <p>© 2026 lveliteconcierge.com</p>
                             <p>Created by Wixerp.com</p>
