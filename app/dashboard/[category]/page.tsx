@@ -117,7 +117,6 @@ export default function DetailedCategoryPage() {
                     <th className="px-10 py-6 text-[9px] text-gray-400 tracking-[0.2em] uppercase font-bold text-left">Trip Configuration</th>
                     <th className="px-10 py-6 text-[9px] text-gray-400 tracking-[0.2em] uppercase font-bold text-left">Pickup Details</th>
                     <th className="px-10 py-6 text-[9px] text-gray-400 tracking-[0.2em] uppercase font-bold text-left">Return Details</th>
-                    <th className="px-10 py-6 text-[9px] text-gray-400 tracking-[0.2em] uppercase font-bold text-right">Actions</th>
                 </tr>
             );
         }
@@ -128,7 +127,6 @@ export default function DetailedCategoryPage() {
                     <th className="px-10 py-6 text-[9px] text-gray-400 tracking-[0.2em] uppercase font-bold text-left">Inquiry Source</th>
                     <th className="px-10 py-6 text-[9px] text-gray-400 tracking-[0.2em] uppercase font-bold text-center">Contact Info</th>
                     <th className="px-10 py-6 text-[9px] text-gray-400 tracking-[0.2em] uppercase font-bold text-center">Submission Date</th>
-                    <th className="px-10 py-6 text-[9px] text-gray-400 tracking-[0.2em] uppercase font-bold text-right">Actions</th>
                 </tr>
             );
         }
@@ -138,7 +136,6 @@ export default function DetailedCategoryPage() {
                 <th className="px-10 py-6 text-[9px] text-gray-400 tracking-[0.2em] uppercase font-bold text-left">Member Information</th>
                 <th className="px-10 py-6 text-[9px] text-gray-400 tracking-[0.2em] uppercase font-bold text-center">Contact Method</th>
                 <th className="px-10 py-6 text-[9px] text-gray-400 tracking-[0.2em] uppercase font-bold text-center">Registration Date</th>
-                <th className="px-10 py-6 text-[9px] text-gray-400 tracking-[0.2em] uppercase font-bold text-right">Actions</th>
             </tr>
         );
     };
@@ -218,9 +215,6 @@ export default function DetailedCategoryPage() {
                             <span className="text-[8px] text-gray-700 tracking-[0.3em] uppercase italic">One-Way Journey</span>
                         )}
                     </td>
-                    <td className="px-10 py-8 text-right">
-                        <button className="text-[9px] font-bold tracking-widest uppercase text-[#B09C6D] hover:text-white pb-1 transition-all">Manage Log</button>
-                    </td>
                 </tr>
             );
         }
@@ -249,9 +243,6 @@ export default function DetailedCategoryPage() {
                     </td>
                     <td className="px-10 py-8 text-center uppercase tracking-widest text-[10px] text-gray-400">
                         {new Date(item.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                    </td>
-                    <td className="px-10 py-8 text-right">
-                        <button className="text-[9px] font-bold tracking-widest uppercase text-[#B09C6D] hover:text-white border-b border-transparent hover:border-white pb-1 transition-all">Reply Inquiry</button>
                     </td>
                 </tr>
             );
@@ -290,9 +281,6 @@ export default function DetailedCategoryPage() {
                 </td>
                 <td className="px-10 py-8 text-center text-[10px] tracking-widest uppercase text-gray-400">
                     {item.created_at ? new Date(item.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'N/A'}
-                </td>
-                <td className="px-10 py-8 text-right">
-                    <button className="text-[9px] font-bold tracking-widest uppercase text-[#B09C6D] hover:text-white border-b border-transparent hover:border-white pb-1 transition-all">View Full Profile</button>
                 </td>
             </tr>
         );
@@ -360,7 +348,7 @@ export default function DetailedCategoryPage() {
                                 <tbody className="divide-y divide-white/5">
                                     {data.length > 0 ? data.map((item, i) => renderRow(item, i)) : (
                                         <tr>
-                                            <td colSpan={4} className="px-10 py-20 text-center text-gray-600 text-[10px] tracking-widest uppercase">
+                                            <td colSpan={3} className="px-10 py-20 text-center text-gray-600 text-[10px] tracking-widest uppercase">
                                                 No intelligence data found for this category
                                             </td>
                                         </tr>

@@ -49,7 +49,7 @@ const ImgAttachment = () => {
                     transition={{ duration: 1, delay: 0.4 }}
                 >
                     <p className="text-gray-200 text-lg md:text-xl lg:text-2xl leading-relaxed font-light tracking-wider">
-                        Connect with LV Elite Concierge and transform your travel experience. From tailored bookings to bespoke itineraries and flawless service, we ensure every journey is luxurious, seamless, and unforgettable. Let us make your vision of perfect travel a reality.
+                       Connect with LV Elite Concierge and elevate your travel experience. From personalized bookings to bespoke itineraries and impeccable service, we ensure every journey is seamless, luxurious, and unforgettable. Let us bring your vision of perfect travel to life.
                     </p>
                 </motion.div>
             </div>

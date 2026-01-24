@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { interior_cockpit, interior_seats } from "@/public";
+import { interior_cockpit, interior_seats, serviceImagePage1, serviceImagePage2 } from "@/public";
 
 const ServiceFeatures = () => {
     return (
@@ -53,7 +53,7 @@ const ServiceFeatures = () => {
                         className="absolute top-0 left-0 w-[70%] h-[70%] rounded-2xl overflow-hidden shadow-2xl border border-white/10"
                     >
                         <Image
-                            src={interior_cockpit}
+                            src={serviceImagePage1}
                             alt="Luxury SUV Interior Cockpit"
                             fill
                             className="object-cover"
@@ -68,7 +68,7 @@ const ServiceFeatures = () => {
                         className="absolute bottom-0 right-0 w-[75%] h-[75%] rounded-2xl overflow-hidden shadow-2xl border border-white/20 z-10"
                     >
                         <Image
-                            src={interior_seats}
+                            src={serviceImagePage2}
                             alt="Luxury SUV Interior Seats"
                             fill
                             className="object-cover"

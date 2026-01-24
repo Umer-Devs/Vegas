@@ -11,22 +11,22 @@ const serviceData = [
   {
     title: "LUXURY SERVICE",
     icon: service1,
-    description: "Experience unparalleled luxury with LV Elite Concierge, where premium vehicles, professional chauffeurs, and personalized service create elegant, comfortable, and exclusive journeys.",
-    linkText: "Please connect with us",
+    description: "Experience unmatched elegance with LV Elite Concierge, where premium vehicles, expertly trained chauffeurs, and personalized attention come together to deliver refined, comfortable, and truly exclusive journeys.",
+    linkText: "CONNECT WITH US",
     href: "/contact"
   },
   {
     title: "PRESTIGE",
     icon: logo,
-    description: "LV Elite Concierge delivers prestige in every ride, combining professionalism, discretion, and attention to detail to ensure each journey is exceptional, refined, and unforgettable.",
-    linkText: "Book Today",
+    description: "LV Elite Concierge defines prestige in every journey, blending professionalism, discretion, and meticulous attention to detail to create an experience that is exceptional, refined, and truly unforgettable.",
+    linkText: "BOOK TODAY",
     href: "/book"
   },
   {
     title: "DEDICATION",
     icon: service3,
-    description: "Our dedication at LV Elite Concierge ensures every journey exceeds expectations, with flawless service, luxury vehicles, and thoughtful details crafted for an extraordinary experience.",
-    linkText: "Choose LV ELITE CONCIERGE",
+    description: "At LV Elite Concierge, our dedication ensures every journey exceeds expectations through impeccable service, luxury vehicles, and thoughtful details designed to deliver an extraordinary experience.",
+    linkText: "CHOOSE LV ELITE CONCIERGE",
     href: "/services"
   }
 ];

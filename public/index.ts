@@ -8,3 +8,6 @@ export { default as interior_seats } from "./interior_seats.png";
 export { default as exterior_closeup } from "./exterior_closeup.png";
 export { default as las_vegas_cta_bg } from "./las_vegas_cta_bg.png";
 export { default as booking_bg } from "./booking_bg.png";
+export { default as serviceImagePage1 } from "./serviceImagePage1.jpg";
+export { default as serviceImagePage2 } from "./serviceImagePage2.jpg";
+export { default as serviceImagePage3 } from "./serviceImagePage3.jpg";
