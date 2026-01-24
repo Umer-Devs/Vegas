@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import { motion } from 'framer-motion';
 
-const AuthCallbackPage = () => {
+const AuthCallbackContent = () => {
     const searchParams = useSearchParams();
     const router = useRouter();
     const { loginWithToken } = useAuth();
@@ -53,4 +53,15 @@ const AuthCallbackPage = () => {
     );
 };
 
+const AuthCallbackPage = () => {
+    return (
+        <Suspense fallback={
+            <div className="min-h-screen w-full flex items-center justify-center bg-black">
+                <div className="text-white">Loading...</div>
+            </div>
+        }>
+            <AuthCallbackContent />
+        </Suspense>
+    );
+};
 export default AuthCallbackPage;
