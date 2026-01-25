@@ -4,6 +4,7 @@ import Image from 'next/image'
 import React from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { toast } from 'react-hot-toast'
 
 import api from '@/lib/api'
 
@@ -36,14 +37,14 @@ const Form = () => {
         try {
             const response = await api.post('/contact', formData)
             if (response.data.status) {
-                alert("Request submitted successfully!")
+                toast.success("Request submitted successfully!")
                 setFormData({ first_name: '', last_name: '', phone: '', email: '' })
             } else {
-                alert(response.data.message || "Submission failed")
+                toast.error(response.data.message || "Submission failed")
             }
         } catch (error) {
             console.error("Submission error:", error)
-            alert("Network error. Please try again.")
+            toast.error("Network error. Please try again.")
         } finally {
             setIsSubmitting(false)
         }

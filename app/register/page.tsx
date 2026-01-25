@@ -5,6 +5,7 @@ import { useAuth } from '@/context/AuthContext';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Facebook, Mail, Phone, Lock, ArrowRight, User } from 'lucide-react';
+import { toast } from 'react-hot-toast';
 
 export default function RegisterPage() {
     const { register } = useAuth();
@@ -25,7 +26,7 @@ export default function RegisterPage() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (formData.password !== formData.confirmPassword) {
-            alert("Passwords do not match!");
+            toast.error("Passwords do not match!");
             return;
         }
         await register(formData.username, formData.email, formData.phone, formData.password, formData.confirmPassword);

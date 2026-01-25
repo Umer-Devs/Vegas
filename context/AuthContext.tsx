@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import api from '@/lib/api';
+import { toast } from 'react-hot-toast';
 
 interface User {
     id?: number;
@@ -84,8 +85,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 if (userData.email === ADMIN_EMAIL) {
                     localStorage.setItem('is_admin', 'true');
                     document.cookie = `is_admin=true; path=/; max-age=86400; SameSite=Lax`;
+                    toast.success("Welcome, Admin!");
                     router.push('/dashboard');
                 } else {
+                    toast.success(`Welcome back, ${userData.name || 'User'}!`);
                     router.push('/');
                 }
                 return true;
@@ -93,12 +96,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 const errorMsg = response.data.errors
                     ? Object.values(response.data.errors).flat().join('\n')
                     : response.data.message || "Login failed";
-                alert(errorMsg);
+                toast.error(errorMsg);
             }
         } catch (error: any) {
             console.error("Login failed:", error);
             const errorMsg = error.response?.data?.message || "Network error. Please try again.";
-            alert(errorMsg);
+            toast.error(errorMsg);
         }
         return false;
     };
@@ -121,16 +124,17 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 localStorage.setItem('user_data', JSON.stringify(userData));
                 localStorage.setItem('auth_token', token);
 
+                toast.success("Registration successful!");
                 router.push('/');
             } else {
                 const errorMsg = response.data.errors
                     ? Object.values(response.data.errors).flat().join('\n')
                     : response.data.message || "Registration failed";
-                alert(errorMsg);
+                toast.error(errorMsg);
             }
         } catch (error) {
             console.error("Registration failed:", error);
-            alert("Network error. Please check your connection.");
+            toast.error("Network error. Please check your connection.");
         }
     };
 
