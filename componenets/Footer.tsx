@@ -27,10 +27,10 @@ const Footer = () => {
 
                     {/* Logo & Copyright */}
                     <div className="flex flex-col space-y-6">
-                        <img src="/logo.png" className="h-16 w-auto object-contain" alt="LV Elite" />
+                        <img src="/logo.png" className="h-28 object" alt="LV Elite" />
                         <div className="text-gray-500 text-[10px] font-light leading-relaxed tracking-widest uppercase">
                             <p>© 2026 lveliteconcierge.com</p>
-                            <p className="mt-1">Created by Wixerp.com</p>
+                            {/* <p className="mt-1">Created by Wixerp.com</p> */}
                         </div>
                     </div>
 
