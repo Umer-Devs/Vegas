@@ -3,12 +3,13 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { las_vegas_cta_bg } from "@/public";
 
 const ImgAttachment = () => {
     return (
         <section
             className="relative w-full py-10 bg-fixed bg-cover bg-center overflow-hidden"
-            style={{ backgroundImage: 'url("https://vegasviprides.com/wp-content/uploads/2024/10/10.webp")' }}
+            style={{ backgroundImage: `url(${las_vegas_cta_bg.src})` }}
         >
             <div className="absolute inset-0 bg-black/70"></div>
 
@@ -49,7 +50,7 @@ const ImgAttachment = () => {
                     transition={{ duration: 1, delay: 0.4 }}
                 >
                     <p className="text-gray-200 text-lg md:text-xl lg:text-2xl leading-relaxed font-light tracking-wider">
-                       Connect with LV Elite Concierge and elevate your travel experience. From personalized bookings to bespoke itineraries and impeccable service, we ensure every journey is seamless, luxurious, and unforgettable. Let us bring your vision of perfect travel to life.
+                        Connect with LV Elite Concierge and elevate your travel experience. From personalized bookings to bespoke itineraries and impeccable service, we ensure every journey is seamless, luxurious, and unforgettable. Let us bring your vision of perfect travel to life.
                     </p>
                 </motion.div>
             </div>

@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Phone, Mail } from "lucide-react";
+import { serviceImagePage1, serviceImagePage2 } from "@/public";
 
 const CtaTwo = () => {
     return (
@@ -11,7 +12,7 @@ const CtaTwo = () => {
             <div className="absolute inset-0 z-0">
                 <div
                     className="absolute right-0 top-0 w-full lg:w-[30%] h-full bg-cover bg-right lg:bg-right bg-no-repeat opacity-60 lg:opacity-100"
-                    style={{ backgroundImage: 'url("https://vegasviprides.com/wp-content/uploads/2024/10/2022-Suburban-in-Orleans.jpg")' }}
+                    style={{ backgroundImage: `url(${serviceImagePage2.src})` }}
                 >
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/20 to-transparent"></div>
                 </div>
