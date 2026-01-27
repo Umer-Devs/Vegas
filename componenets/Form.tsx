@@ -1,5 +1,5 @@
 "use client";
-import { luxury_suv_hero, logo } from '@/public'
+import { luxury_suv_hero, logo, HeroBannerOne, serviceImagePage3 } from '@/public'
 import Image from 'next/image'
 import React from 'react'
 import { motion } from 'framer-motion'
@@ -65,7 +65,7 @@ const Form = () => {
             >
                 <div className="relative h-[300px] md:h-[400px] w-full">
                     <Image
-                        src={luxury_suv_hero}
+                        src={serviceImagePage3.src}
                         alt="Luxury SUV"
                         fill
                         className="object-cover opacity-80"

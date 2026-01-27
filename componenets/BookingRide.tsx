@@ -25,7 +25,8 @@ const InputField = ({ label, placeholder, icon: Icon, type = "text", value, onCh
                 placeholder={placeholder}
                 value={value || ""}
                 onChange={(e) => onChange(label, e.target.value)}
-                className={`w-full bg-white/5 border ${error && !value ? 'border-red-500' : 'border-white/10'} rounded-lg py-3 pl-12 pr-4 text-white text-sm focus:outline-none focus:border-[#B09C6D] focus:ring-1 focus:ring-[#B09C6D] transition-all placeholder:text-gray-600`}
+                onClick={(e) => type === 'date' && (e.currentTarget as any).showPicker?.()}
+                className={`w-full bg-white/5 border ${error && !value ? 'border-red-500' : 'border-white/10'} rounded-lg py-3 pl-12 pr-4 text-white text-sm focus:outline-none focus:border-[#B09C6D] focus:ring-1 focus:ring-[#B09C6D] transition-all placeholder:text-gray-600 [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:right-0 [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:cursor-pointer`}
             />
         </div>
     </div>
@@ -56,7 +57,7 @@ const SelectField = ({ label, options, icon: Icon, value, onChange, error }: any
 );
 
 const BookingRide = () => {
-    const { isLoggedIn } = useAuth();
+    const { isLoggedIn, user } = useAuth();
     const router = useRouter();
     const [activeTab, setActiveTab] = useState<BookingType>("One-Way");
     const [formData, setFormData] = useState<Record<string, string>>({});
@@ -87,9 +88,13 @@ const BookingRide = () => {
 
         setIsSubmitting(true);
         try {
+            // Determine booking email
+            const bookingEmail = user?.email || (isLoggedIn ? "admin@eliteconciergelv.com" : null);
+
             // Map frontend fields to backend fields
             const payload = {
                 type: activeTab.toLowerCase(),
+                email: bookingEmail,
                 pickup_location: formData["Pickup Location"],
                 dropoff_location: formData["Drop-off Location"],
                 pickup_date: formData["Pickup Date"],
@@ -99,6 +104,8 @@ const BookingRide = () => {
                 return_date: formData["Return Date"] || null,
                 return_time: formData["Return Time"] || null,
             };
+
+            console.log("Booking Payload:", payload);
 
             const response = await api.post('/booking', payload);
 

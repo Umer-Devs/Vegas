@@ -12,3 +12,4 @@ export { default as serviceImagePage1 } from "./serviceImagePage1.jpg";
 export { default as serviceImagePage2 } from "./serviceImagePage2.jpg";
 export { default as serviceImagePage3 } from "./serviceImagePage3.jpg";
 export { default as luxury_suv_fleet } from "./luxury_suv_fleet.png";
+export { default as HeroBannerOne } from "./HeroBannerOne.png";

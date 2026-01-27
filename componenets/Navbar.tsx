@@ -17,7 +17,7 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const pathname = usePathname();
-    const { isAdmin, logout } = useAuth();
+    const { isAdmin, isLoggedIn, logout } = useAuth();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -67,8 +67,8 @@ const Navbar = () => {
                         );
                     })}
 
-                    {isAdmin ? (
-                        <div className="flex items-center space-x-8 pl-8 border-l border-white/10">
+                    {isAdmin && (
+                        <div className="flex items-center space-x-8 pr-8 mr-8 border-r border-white/10">
                             <Link
                                 href="/dashboard"
                                 className={cn(
@@ -79,13 +79,16 @@ const Navbar = () => {
                                 <ShieldCheck size={14} className="text-[#B09C6D]" />
                                 Admin
                             </Link>
-                            <button
-                                onClick={logout}
-                                className="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400 hover:text-white transition-colors"
-                            >
-                                Logout
-                            </button>
                         </div>
+                    )}
+
+                    {isLoggedIn ? (
+                        <button
+                            onClick={logout}
+                            className="bg-[#B09C6D] text-black text-[10px] font-bold tracking-[0.2em] uppercase px-8 py-2.5 hover:bg-white transition-all transform hover:scale-105"
+                        >
+                            Sign Out
+                        </button>
                     ) : (
                         <Link
                             href="/login"
@@ -151,18 +154,20 @@ const Navbar = () => {
                                 ))}
 
                                 <div className="pt-10 border-t border-white/10 flex flex-col space-y-8">
-                                    {isAdmin ? (
+                                    {isLoggedIn ? (
                                         <>
-                                            <Link
-                                                href="/dashboard"
-                                                onClick={() => setIsOpen(false)}
-                                                className="text-2xl font-bold tracking-[0.2em] uppercase text-[#B09C6D]"
-                                            >
-                                                Admin Dashboard
-                                            </Link>
+                                            {isAdmin && (
+                                                <Link
+                                                    href="/dashboard"
+                                                    onClick={() => setIsOpen(false)}
+                                                    className="text-2xl font-bold tracking-[0.2em] uppercase text-[#B09C6D]"
+                                                >
+                                                    Admin Dashboard
+                                                </Link>
+                                            )}
                                             <button
                                                 onClick={() => { logout(); setIsOpen(false); }}
-                                                className="text-left text-2xl font-bold tracking-[0.2em] uppercase text-gray-600"
+                                                className="text-left text-2xl font-bold tracking-[0.2em] uppercase text-[#B09C6D]"
                                             >
                                                 Sign Out
                                             </button>

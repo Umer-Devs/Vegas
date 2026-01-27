@@ -5,6 +5,7 @@ import { useAuth } from '@/context/AuthContext';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Facebook, Mail, Lock, ArrowRight } from 'lucide-react';
+import { serviceImagePage3 } from '@/public';
 
 export default function LoginPage() {
     const [email, setEmail] = useState('');
@@ -33,7 +34,7 @@ export default function LoginPage() {
             <div className="hidden lg:flex w-1/2 relative flex-col justify-between p-12 lg:p-16 overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="/luxury_suv_hero.png"
+                        src={serviceImagePage3.src}
                         alt="Luxury Background"
                         className="w-full h-full object-cover opacity-60"
                     />

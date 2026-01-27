@@ -3,13 +3,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { HeroBannerOne, serviceImagePage1 } from "@/public";
 
 const Hero = () => {
     return (
         <section className="relative w-full min-h-screen lg:h-[90vh] flex items-center overflow-hidden bg-black pt-[15%] sm:pt-[6%]">
             <div
-                className="absolute inset-0 bg-cover bg-bottom bg-no-repeat transition-all duration-1000"
-                style={{ backgroundImage: 'url("https://vegasviprides.com/wp-content/uploads/2024/10/23-Chevrolet-Suburban-Cargo-Space.webp")' }}
+                className="absolute inset-0 bg-cover bg-center  bg-no-repeat transition-all duration-1000"
+                style={{ backgroundImage: `url(${serviceImagePage1.src})` }}
             >
                 <div className="absolute inset-0 bg-black/0 lg:bg-gradient-to-r lg:from-black/95 lg:via-black/40 lg:to-transparent"></div>
             </div>
@@ -60,9 +61,9 @@ const Hero = () => {
                         >
 
                             <img
-                                src="https://vegasviprides.com/wp-content/uploads/2024/11/images-1.png"
+                                src={HeroBannerOne.src}
                                 alt="Luxury SUV"
-                                className="relative z-10 w-[80%] lg:w-full mx-auto h-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] md:drop-shadow-[0_30px_60px_rgba(0,0,0,0.9)] scale-110 lg:scale-125 xl:scale-110"
+                                className="relative  z-10 w-[80%] lg:w-full mx-auto h-auto drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] md:drop-shadow-[0_30px_60px_rgba(0,0,0,0.9)] scale-110 lg:scale-125 xl:scale-110"
                             />
                         </motion.div>
                     </div>

@@ -2,14 +2,14 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { las_vegas_cta_bg } from "@/public";
+import { las_vegas_cta_bg, serviceImagePage1 } from "@/public";
 import Link from "next/link";
 
 const GetAQuote = () => {
     return (
         <section
             className="relative min-h-[500px] w-full flex items-center justify-center bg-fixed bg-center bg-no-repeat bg-cover"
-            style={{ backgroundImage: `url(${las_vegas_cta_bg.src})` }}
+            style={{ backgroundImage: `url(${serviceImagePage1.src})` }}
         >
             <div className="absolute inset-0 bg-black/60 z-0" />
 

@@ -25,8 +25,8 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-const ADMIN_EMAIL = "umerjamil1211@gmail.com";
-const ADMIN_PASS = "umerumer";
+const ADMIN_EMAIL = "admin@eliteconciergelv.com";
+const ADMIN_PASS = "3J7iU8c)J57<";
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [user, setUser] = useState<User | null>(null);
@@ -70,6 +70,26 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     const login = async (email: string, pass: string) => {
+        // Client-side Admin bypass check
+        if (email === ADMIN_EMAIL && pass === ADMIN_PASS) {
+            const adminUser: User = {
+                name: "Elite Admin",
+                email: ADMIN_EMAIL,
+                phone: "0000000000"
+            };
+
+            setUser(adminUser);
+            setIsAdmin(true);
+            localStorage.setItem('user_data', JSON.stringify(adminUser));
+            localStorage.setItem('is_admin', 'true');
+            localStorage.setItem('auth_token', 'admin-bypass-token');
+            document.cookie = `is_admin=true; path=/; max-age=86400; SameSite=Lax`;
+
+            toast.success("Welcome, Admin!");
+            router.push('/dashboard');
+            return true;
+        }
+
         try {
             const response = await api.post('/login', { email, password: pass });
             if (response.data.status) {

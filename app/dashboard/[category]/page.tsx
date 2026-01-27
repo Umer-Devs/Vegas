@@ -114,6 +114,7 @@ export default function DetailedCategoryPage() {
             return (
                 <tr className="bg-white/[0.05] border-b border-white/10">
                     <th className="px-10 py-6 text-[9px] text-gray-400 tracking-[0.2em] uppercase font-bold text-left">Order Reference</th>
+                    <th className="px-10 py-6 text-[9px] text-gray-400 tracking-[0.2em] uppercase font-bold text-left">Member Email</th>
                     <th className="px-10 py-6 text-[9px] text-gray-400 tracking-[0.2em] uppercase font-bold text-left">Trip Configuration</th>
                     <th className="px-10 py-6 text-[9px] text-gray-400 tracking-[0.2em] uppercase font-bold text-left">Pickup Details</th>
                     <th className="px-10 py-6 text-[9px] text-gray-400 tracking-[0.2em] uppercase font-bold text-left">Return Details</th>
@@ -150,6 +151,14 @@ export default function DetailedCategoryPage() {
                                 {item.order_number || `#{item.id}`}
                             </span>
                             <span className="text-[9px] text-gray-500 font-medium">REF ID: {item.id}</span>
+                        </div>
+                    </td>
+                    <td className="px-10 py-8">
+                        <div className="flex flex-col gap-1">
+                            <span className="text-white text-[10px] font-bold tracking-widest lowercase group-hover:text-[#B09C6D] transition-colors">
+                                {item.user_email || item.email || 'N/A'}
+                            </span>
+                            <span className="text-[8px] text-gray-600 tracking-widest uppercase">Requester</span>
                         </div>
                     </td>
                     <td className="px-10 py-8">

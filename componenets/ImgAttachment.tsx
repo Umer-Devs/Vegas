@@ -3,12 +3,13 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { serviceImagePage1 } from "@/public";
 
 const ImgAttachment = () => {
     return (
         <section
             className="relative w-full py-10 bg-fixed bg-cover bg-center overflow-hidden"
-            style={{ backgroundImage: 'url("https://vegasviprides.com/wp-content/uploads/2024/10/10.webp")' }}
+            style={{ backgroundImage: `url(${serviceImagePage1.src})` }}
         >
             <div className="absolute inset-0 bg-black/70"></div>
 
