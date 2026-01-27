@@ -3,13 +3,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { las_vegas_cta_bg } from "@/public";
 
 const ImgAttachment = () => {
     return (
         <section
             className="relative w-full py-10 bg-fixed bg-cover bg-center overflow-hidden"
-            style={{ backgroundImage: `url(${las_vegas_cta_bg.src})` }}
+            style={{ backgroundImage: 'url("https://vegasviprides.com/wp-content/uploads/2024/10/10.webp")' }}
         >
             <div className="absolute inset-0 bg-black/70"></div>
 
