@@ -4,13 +4,14 @@ import React, { useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Facebook, Mail, Lock, ArrowRight } from 'lucide-react';
+import { Facebook, Mail, Lock, ArrowRight, Eye, EyeOff } from 'lucide-react';
 import { serviceImagePage3 } from '@/public';
 
 export default function LoginPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     const { login } = useAuth();
     const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
 
@@ -104,17 +105,23 @@ export default function LoginPage() {
                             <div className="group space-y-2">
                                 <div className="flex justify-between items-center">
                                     <label className="text-[10px] text-gray-500 font-bold tracking-widest uppercase ml-1 group-focus-within:text-[#B09C6D] transition-colors">Password</label>
-                                    <button type="button" className="text-[9px] text-gray-500 hover:text-[#B09C6D] transition-colors uppercase tracking-wider">Forgot?</button>
                                 </div>
                                 <div className="relative">
                                     <input
-                                        type="password"
+                                        type={showPassword ? "text" : "password"}
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
                                         required
-                                        className="w-full bg-transparent border-b border-white/20 px-0 py-3 text-white placeholder-gray-700 focus:outline-none focus:border-[#B09C6D] transition-all text-sm"
+                                        className="w-full bg-transparent border-b border-white/20 px-0 py-3 text-white placeholder-gray-700 focus:outline-none focus:border-[#B09C6D] transition-all text-sm pr-10"
                                         placeholder="••••••••"
                                     />
+                                    <button
+                                        type="button"
+                                        onClick={() => setShowPassword(!showPassword)}
+                                        className="absolute right-0 top-1/2 -translate-y-1/2 text-gray-500 hover:text-[#B09C6D] transition-colors p-2"
+                                    >
+                                        {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                                    </button>
                                 </div>
                             </div>
                         </div>
