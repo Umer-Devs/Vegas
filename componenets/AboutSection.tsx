@@ -31,7 +31,7 @@ const AboutSection = () => {
           </p>
         </motion.div>
         <button className=" mt-[4%] group relative px-8 md:px-10 py-3 md:py-5 border-2 border-white text-white font-bold tracking-[0.1em] md:tracking-[0.2em] text-xs md:text-base overflow-hidden transition-all duration-300 hover:text-black hover:border-[#B09C6D]">
-          <span className="relative z-10">BOOK PRIVATELY</span>
+          <span className="relative z-10">BOOK PRIVATELY WITH US</span>
           <div className="absolute inset-0 bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
         </button>
 
